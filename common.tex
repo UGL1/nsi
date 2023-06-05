@@ -45,49 +45,66 @@
 % Boxes: Packages
 \RequirePackage[minted,most]{tcolorbox}
 \setminted{autogobble=true,breaklines=true}
-\RequirePackage{fontawesome5}
+%\RequirePackage{fontawesome5}
 
 % Boxes: modubox
-\newenvironment*{modubox}[3]{\begin{tcolorbox}[colback=#3!10!white,colframe=#3!75!white,title=#1 {~\boxfont #2},left=1ex,right=1ex,boxrule=0.5pt,breakable,arc=2pt]}{\end{tcolorbox}}
+
+% This is the first modubox try using fontawesome5 icons
+%\newenvironment*{modubox}[3]{\begin{tcolorbox}[colback=#3!10!white,colframe=#3!75!white,title=#1 {~\boxfont #2},left=1ex,right=1ex,boxrule=0.5pt,breakable,arc=2pt]}{\end{tcolorbox}}
+
+\newenvironment{modubox}[2]{
+  \begin{tcolorbox}[title={\color{#2}\boxfont #1},
+      colback=white,
+      boxrule=0pt,
+      colframe=white,
+      colbacktitle=white,
+      attach boxed title to top left={xshift=-3.4mm,yshift=.2mm},
+      frame hidden,
+      sharp corners,
+      enhanced,
+      borderline west={5pt}{1pt}{#2!50},
+      colback=white]
+    }
+    {\end{tcolorbox}}
 
 % Boxes: various code environments
-\newenvironment*{pyc}{\begin{modubox}{\faPython}{Code Python}{UGLiPurple}}{
-    \end{modubox}}
+\newenvironment*{pyc}{\begin{modubox}{Python}{UGLiPurple}}{
+  \end{modubox}}
 
-\newenvironment*{pys}{\begin{modubox}{\faPython}{Shell Python}{UGLiPurple}}{
-    \end{modubox}}
+\newenvironment*{pys}{\begin{modubox}{Python}{UGLiPurple}}{
+  \end{modubox}}
 
-\newenvironment*{html}{\begin{modubox}{\faHtml5}{Code HTML}{UGLiGreen}}{
-    \end{modubox}}
+\newenvironment*{html}{\begin{modubox}{HTML}{UGLiGreen}}{
+  \end{modubox}}
 
-\newenvironment*{css}{\begin{modubox}{\faCss3*}{Code CSS}{UGLiOrange}}{
-    \end{modubox}}
+\newenvironment*{css}{\begin{modubox}{CSS}{UGLiOrange}}{
+  \end{modubox}}
 
-\newenvironment*{js}{\begin{modubox}{\faJs}{Code Javascript}{UGLiBlue}}{
-    \end{modubox}}
+\newenvironment*{js}{\begin{modubox}{Javascript}{UGLiBlue}}{
+  \end{modubox}}
 
-\newenvironment*{cpp}{\begin{modubox}{\faCode}{Code C++}{UGLiOrange}}{
-    \end{modubox}}
+\newenvironment*{cpp}{\begin{modubox}{C++}{UGLiOrange}}{
+  \end{modubox}}
 
-\newenvironment*{clang}{\begin{modubox}{\faCode}{Code C}{UGLiOrange}}{
-    \end{modubox}}
+\newenvironment*{clang}{\begin{modubox}{C}{UGLiOrange}}{
+  \end{modubox}}
 
 % Boxes: various text environments
-\newenvironment*{definition}[1][]{\begin{modubox}{\faBookOpen}{Définition#1}{UGLiGreen}}{\end{modubox}}
+\newenvironment*{definition}[1][]{\begin{modubox}{Définition#1}{UGLiGreen}}{\end{modubox}}
 
-\newenvironment*{propriete}[1][]{\begin{modubox}{\faExclamationCircle}{Propriété#1}{UGLiRed}}{\end{modubox}}
+\newenvironment*{propriete}[1][]{\begin{modubox}{Propriété#1}{UGLiRed}}{\end{modubox}}
 
-\newenvironment*{methode}[1][]{\begin{modubox}{\faBookmark}{Méthode#1}{UGLiPurple}}{\end{modubox}}
+\newenvironment*{methode}[1][]{\begin{modubox}{Méthode#1}{UGLiPurple}}{\end{modubox}}
 
-\newenvironment*{remarque}[1][]{\begin{modubox}{\faHandPointUp}{Remarque#1}{UGLiBlue}}{\end{modubox}}
+\newenvironment*{remarque}[1][]{\begin{modubox}{Remarque#1}{UGLiBlue}}{\end{modubox}}
 
-\newenvironment*{aretenir}[1][]{\begin{modubox}{\faBrain}{À retenir#1}{UGLiGreen}}{\end{modubox}}
+\newenvironment*{aretenir}[1][]{\begin{modubox}{À retenir#1}{UGLiGreen}}{\end{modubox}}
 
 % Boxes: exo
 \newcounter{exonumber}
 \setcounter{exonumber}{0}
-\newenvironment*{exercice}[1][]{\stepcounter{exonumber}\begin{modubox}{\faPencil*}{Exercice \theexonumber #1
-        }{UGLiOrange}}{\end{modubox}}
+\newenvironment*{exercice}[1][]{\stepcounter{exonumber}\begin{modubox}{Exercice \theexonumber #1
+    }{UGLiOrange}}{\end{modubox}}
 
 % Compatibility
 \newcommand{\pythoninline}[1]{\mintinline{python}{#1}}
@@ -101,8 +118,8 @@
 
 
 \newenvironment{pmatrice}															% Environnement pmatrice pour des écritures serrées
-	{\renewcommand\arraystretch{0.7}\begin{pmatrix}}
-	{\end{pmatrix}\renewcommand\arraystretch{1}}
+{\renewcommand\arraystretch{0.7}\begin{pmatrix}}
+    {\end{pmatrix}\renewcommand\arraystretch{1}}
 \newcommand\repaff{\left(\ O \ ; \ I\ ; \ \ J\ \right)}								% Point et coordonnées dans le plan
 \newcommand\rep{\left(O \ ; \ \vv{\imath}, \ \vv{\jmath}\right)}					% Repère du plan
 \newcommand\repe{\left(O \ ; \ \vv{\imath}, \ \vv{\jmath}, \ \vv{k} \right)}		% Repère de l'espace
@@ -201,34 +218,34 @@
 
 \def\@star@or@long#1{%
   \@ifstar
-   {\let\l@ngrel@x\relax#1}%
-   {\let\l@ngrel@x\long#1}}
+  {\let\l@ngrel@x\relax#1}%
+  {\let\l@ngrel@x\long#1}}
 
 \let\l@ngrel@x\relax
 \def\newcommand{\@star@or@long\new@command}
 \def\new@command#1{%
   \@testopt{\@newcommand#1}0}
 \def\@newcommand#1[#2]{%
-  \@ifnextchar [{\@xargdef#1[#2]}%
-                {\@argdef#1[#2]}}
+\@ifnextchar [{\@xargdef#1[#2]}%
+  {\@argdef#1[#2]}}
 \long\def\@argdef#1[#2]#3{%
-   \@ifdefinable #1{\@yargdef#1\@ne{#2}{#3}}}
+  \@ifdefinable #1{\@yargdef#1\@ne{#2}{#3}}}
 \long\def\@xargdef#1[#2][#3]#4{%
   \@ifdefinable#1{%
-     \expandafter\def\expandafter#1\expandafter{%
-          \expandafter
-          \@protected@testopt
-          \expandafter
-          #1%
-          \csname\string#1\expandafter\endcsname
-          {#3}}%
-       \expandafter\@yargdef
-          \csname\string#1\endcsname
-           \tw@
-           {#2}%
-           {#4}}}
+    \expandafter\def\expandafter#1\expandafter{%
+      \expandafter
+      \@protected@testopt
+      \expandafter
+      #1%
+      \csname\string#1\expandafter\endcsname
+      {#3}}%
+    \expandafter\@yargdef
+    \csname\string#1\endcsname
+    \tw@
+    {#2}%
+    {#4}}}
 
- \def\@testopt#1#2{%
+\def\@testopt#1#2{%
   \@ifnextchar[{#1}{#1[#2]}}
 \def\@protected@testopt#1{%%
   \ifx\protect\@typeset@protect
@@ -244,62 +261,62 @@
   \edef\reserved@a{\ifx#2\tw@ [\@hash@1]\fi}%
   \@tempcntb #2%
   \@whilenum\@tempcntb <\@tempcnta
-     \do{%
-         \edef\reserved@a{\reserved@a\@hash@\the\@tempcntb}%
-         \advance\@tempcntb \@ne}%
+  \do{%
+    \edef\reserved@a{\reserved@a\@hash@\the\@tempcntb}%
+    \advance\@tempcntb \@ne}%
   \let\@hash@##%
   \l@ngrel@x\expandafter\def\expandafter#1\reserved@a}
 \long\def\@reargdef#1[#2]#3{%
   \@yargdef#1\@ne{#2}{#3}}
 
- \def\renewcommand{\@star@or@long\renew@command}
+\def\renewcommand{\@star@or@long\renew@command}
 \def\renew@command#1{%
   {\escapechar\m@ne\xdef\@gtempa{{\string#1}}}%
   \expandafter\@ifundefined\@gtempa
-     {\@latex@error{\string#1 undefined}\@ehc}%
-     {}%
+  {\@latex@error{\string#1 undefined}\@ehc}%
+  {}%
   \let\@ifdefinable\@rc@ifdefinable
-  \new@command#1}
-\long\def\@ifdefinable #1#2{%
+    \new@command#1}
+    \long\def\@ifdefinable #1#2{%
       \edef\reserved@a{\expandafter\@gobble\string #1}%
-     \@ifundefined\reserved@a
-         {\edef\reserved@b{\expandafter\@carcube \reserved@a xxx\@nil}%
+      \@ifundefined\reserved@a
+        {\edef\reserved@b{\expandafter\@carcube \reserved@a xxx\@nil}%
           \ifx \reserved@b\@qend \@notdefinable\else
             \ifx \reserved@a\@qrelax \@notdefinable\else
               #2%
             \fi
           \fi}%
-         \@notdefinable}
-\let\@@ifdefinable\@ifdefinable
-\long\def\@rc@ifdefinable#1#2{%
-  \let\@ifdefinable\@@ifdefinable
-  #2}
+        \@notdefinable}
+        \let\@@ifdefinable\@ifdefinable
+          \long\def\@rc@ifdefinable#1#2{%
+          \let\@ifdefinable\@@ifdefinable
+            #2}
 
-\def\@ifundefined#1{%
-  \expandafter\ifx\csname#1\endcsname\relax
-    \expandafter\@firstoftwo
-  \else
-    \expandafter\@secondoftwo
-  \fi}
+            \def\@ifundefined#1{%
+              \expandafter\ifx\csname#1\endcsname\relax
+                \expandafter\@firstoftwo
+              \else
+                \expandafter\@secondoftwo
+              \fi}
 
-\newcount\@tempcnta
-\newcount\@tempcntb
+              \newcount\@tempcnta
+              \newcount\@tempcntb
 
-\long\def\@whilenum#1\do #2{\ifnum #1\relax #2\relax\@iwhilenum{#1\relax
-     #2\relax}\fi}
-\long\def\@iwhilenum#1{\ifnum #1\expandafter\@iwhilenum
-         \else\expandafter\@gobble\fi{#1}}
-\long\def\@whiledim#1\do #2{\ifdim #1\relax#2\@iwhiledim{#1\relax#2}\fi}
-\long\def\@iwhiledim#1{\ifdim #1\expandafter\@iwhiledim
-        \else\expandafter\@gobble\fi{#1}}
-\long\def\@whilesw#1\fi#2{#1#2\@iwhilesw{#1#2}\fi\fi}
-\long\def\@iwhilesw#1\fi{#1\expandafter\@iwhilesw
-         \else\@gobbletwo\fi{#1}\fi}
+              \long\def\@whilenum#1\do #2{\ifnum #1\relax #2\relax\@iwhilenum{#1\relax
+                    #2\relax}\fi}
+              \long\def\@iwhilenum#1{\ifnum #1\expandafter\@iwhilenum
+              \else\expandafter\@gobble\fi{#1}}
+              \long\def\@whiledim#1\do #2{\ifdim #1\relax#2\@iwhiledim{#1\relax#2}\fi}
+              \long\def\@iwhiledim#1{\ifdim #1\expandafter\@iwhiledim
+              \else\expandafter\@gobble\fi{#1}}
+              \long\def\@whilesw#1\fi#2{#1#2\@iwhilesw{#1#2}\fi\fi}
+        \long\def\@iwhilesw#1\fi{#1\expandafter\@iwhilesw
+    \else\@gobbletwo\fi{#1}\fi}
 \def\@nnil{\@nil}
 \def\@empty{}
 
 \ifx\@@input\@undefined
- \let\@@input\input
+  \let\@@input\input
 \fi
 
 \def\input{\@ifnextchar\bgroup\@iinput\@@input}
@@ -310,35 +327,35 @@
 \newcount\nb@b
 \newcount\iter@
 \newcommand\division[2][2]{%
-   \def\dividende@{#2}\def\base@{#1}\iter@\@ne\division@{#2}{#1}}
+  \def\dividende@{#2}\def\base@{#1}\iter@\@ne\division@{#2}{#1}}
 \newcommand\division@[2]{%
-   \setbox\nb@box\hbox{\kern0.5em#1\kern0.5em}%
-   \nb@a#1 \nb@b#1 \divide\nb@b#2
-   \vtop{%
-      \begingroup
-         \multiply\nb@b#2 \advance\nb@a-\nb@b
-         \hbox to\wd\nb@box{\hfil#1\hfil}%
-         \vskip3pt\hrule height0pt width\wd\nb@box\vskip3.4pt
-         \hbox to\wd\nb@box{\hfil\bf\Red{\number\nb@a}\kern0.5em}%
-         \expandafter\xdef\csname reste@\number\iter@\endcsname{\number\nb@a}%
-      \endgroup}%
-   \setbox\nb@box\hbox{8}\vrule height\ht\nb@box depth3.5ex
-   \setbox\nb@box\hbox{\kern0.5em\ifnum#2>\nb@b #2\else\number\nb@b\fi\kern0.5em}%
-   \vtop{%
-      \hbox to\wd\nb@box{\kern0.5em#2\hfil}%
-      \vskip3pt\hrule height0.4pt width\wd\nb@box\vskip3pt
-      \hbox{%
-         \csname @\ifnum\nb@b>\z@ first\else second\fi oftwo\endcsname
-         {\advance\iter@\@ne\gdef\maxiter{\number\iter@}%
-          \expandafter\division@\expandafter{\number\nb@b}{#2}}%
-         {\kern0.5em\number\nb@b\xdef\maxiter{\number\iter@}}}}}
+  \setbox\nb@box\hbox{\kern0.5em#1\kern0.5em}%
+  \nb@a#1 \nb@b#1 \divide\nb@b#2
+  \vtop{%
+    \begingroup
+    \multiply\nb@b#2 \advance\nb@a-\nb@b
+    \hbox to\wd\nb@box{\hfil#1\hfil}%
+    \vskip3pt\hrule height0pt width\wd\nb@box\vskip3.4pt
+    \hbox to\wd\nb@box{\hfil\bf\Red{\number\nb@a}\kern0.5em}%
+    \expandafter\xdef\csname reste@\number\iter@\endcsname{\number\nb@a}%
+    \endgroup}%
+  \setbox\nb@box\hbox{8}\vrule height\ht\nb@box depth3.5ex
+  \setbox\nb@box\hbox{\kern0.5em\ifnum#2>\nb@b #2\else\number\nb@b\fi\kern0.5em}%
+  \vtop{%
+    \hbox to\wd\nb@box{\kern0.5em#2\hfil}%
+    \vskip3pt\hrule height0.4pt width\wd\nb@box\vskip3pt
+    \hbox{%
+      \csname @\ifnum\nb@b>\z@ first\else second\fi oftwo\endcsname
+      {\advance\iter@\@ne\gdef\maxiter{\number\iter@}%
+        \expandafter\division@\expandafter{\number\nb@b}{#2}}%
+      {\kern0.5em\number\nb@b\xdef\maxiter{\number\iter@}}}}}
 
 \newcommand\afficheresultat{$(\dividende@)_{10}=(\afficheresultat@\maxiter)_{\base@}$}
 \newcommand\afficheresultat@[1]{%
-   \csname reste@#1\endcsname
-   \ifnum#1>\@ne
-      \expandafter\expandafter\expandafter\afficheresultat@
-   \else
-      \expandafter\@gobble
-   \fi{\number\numexpr#1-1}}
+\csname reste@#1\endcsname
+\ifnum#1>\@ne
+  \expandafter\expandafter\expandafter\afficheresultat@
+\else
+  \expandafter\@gobble
+\fi{\number\numexpr#1-1}}
 \makeatother

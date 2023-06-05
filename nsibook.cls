@@ -40,6 +40,11 @@
 {0em} % Separation between label and title
 {} % Code preceding the title
 
+% Specific
 
+\newcommand{\introduction}[1] 
+{\begin{flushright}\small
+\color{UGLiBlue}\textit{« #1 »}
+\end{flushright}}
 
 
