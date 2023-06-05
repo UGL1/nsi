@@ -1,0 +1,53 @@
+\documentclass{nsibook}
+\usepackage{lipsum}
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        \includegraphics[width=12cm]{yin_yang_python.png}\\[2em]
+
+        {\bigtitlefont \LARGE\color{gray} NSI1}
+
+        {\titlefont\Large\color{gray} Spécialité numérique et sciences informatiques en classe de première\\[2em]}
+
+        {\color{gray}\textbf{Lycée Rabelais\\ Saint Brieuc\\ 2032-2024}}
+    \end{center}
+\end{titlepage}
+
+\chapter{Un titre}
+
+{\begin{flushright}
+    CouCOu
+\end{flushright}}
+\begin{aretenir}
+    \begin{enumerate}[--]
+        \item ceci ;
+        \item cela ;
+        \item cela aussi.
+    \end{enumerate}
+\end{aretenir}
+
+\section{Une section}
+\subsection{Une sous-section}
+\subsubsection{Une sous-sous-section}
+\lipsum[5]
+\begin{pyc}
+    \begin{minted}{python}
+        def f(x: int) -> int:
+            return x + 1 # un commentaire
+    \end{minted}
+\end{pyc}
+\lipsum[5]
+\begin{figure}
+    \begin{center}
+        \begin{tabular}{ccc}
+            \rowcolor{UGLiOrange!75}
+            \color{white}\textbf{premier} & \color{white}\textbf{deuxième} & \color{white}\textbf{troisième} \\
+            machin                        & bidule                         & chose                           \\
+            zinzin                        & schmurtz                       & truc\\
+            rebidule                        & rechose                       & remachin\\
+            
+        \end{tabular}
+    \end{center}
+    \caption{Une table}
+\end{figure}\end{document}
