@@ -35,7 +35,10 @@
 
 % General text formatting
 \RequirePackage{colortbl}
-\rowcolors[]{1}{UGLiBlue!10}{UGLiBlue!0} % to alternate colors
+
+\newcommand{\alternaterowcolors}[1][UGLiBlue]{
+  \rowcolors[]{1}{#1!10}{#1!0}
+}% to alternate colors
 \RequirePackage{enumerate}
 \RequirePackage{numprint}
 \newcommand{\np}{\numprint}
@@ -54,7 +57,7 @@
 
 \newenvironment{modubox}[2]{
   \begin{tcolorbox}[title={\color{#2}\boxfont #1},
-      colback=white,
+      colback=white, breakable,
       boxrule=0pt,
       colframe=white,
       colbacktitle=white,
@@ -91,6 +94,11 @@
 
 % Boxes: various text environments
 \newenvironment*{definition}[1][]{\begin{modubox}{Définition#1}{UGLiGreen}}{\end{modubox}}
+
+\newenvironment*{notation}[1][]{\begin{modubox}{Notation#1}{UGLiBlue}}{\end{modubox}}
+
+\newenvironment*{exemple}[1][]{\begin{modubox}{Exemple#1}{UGLiBlue}}{\end{modubox}}
+
 
 \newenvironment*{propriete}[1][]{\begin{modubox}{Propriété#1}{UGLiRed}}{\end{modubox}}
 

@@ -1,9 +1,11 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{nsibook}[2023/06/03 nsibook]
-\LoadClass[a4paper,12pt]{book}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
+\ProcessOptions\relax
+\LoadClass{book}
 
 % Common
-\include{common.tex}
+\input{common.tex}
 
 % Title and section formatting
 \renewcommand{\thechapter}{\arabic{chapter}}
@@ -41,7 +43,9 @@
 {} % Code preceding the title
 
 % Specific
-
+\usepackage{float}
+\usepackage{caption}
+\captionsetup{font=scriptsize}
 \newcommand{\introduction}[1] 
 {\begin{flushright}\small
 \color{UGLiBlue}\textit{« #1 »}
