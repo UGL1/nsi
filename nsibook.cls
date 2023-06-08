@@ -9,9 +9,7 @@
 
 % Title and section formatting
 \renewcommand{\thechapter}{\arabic{chapter}}
-\renewcommand{\thesection}{
-    \arabic{section}
-}
+\renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{
     {\color{UGLiOrange!25!white}\arabic{section}.}\arabic{subsection}.
 }
@@ -27,7 +25,7 @@
 {\Large\titlefont\color{UGLiBlue}} % Format for section title
 {\thesection} % Label
 {0em} % Separation between label and title
-{\hspace{-.3ex}.} % Code preceding the title
+{.~} % Code preceding the title
 
 \titleformat{\subsection}
 {\large\titlefont\color{UGLiOrange}} % Format for section title
