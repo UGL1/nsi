@@ -371,3 +371,33 @@
   \expandafter\@gobble
 \fi{\number\numexpr#1-1}}
 \makeatother
+
+
+
+%\floatpictureright{fraction}{imagefile}{text}
+\newlength{\colOne}
+\newlength{\colTwo}
+\newlength{\gutter}
+\setlength{\gutter}{2em}
+\newcommand{\floatpictureright}[3]{
+  \setlength{\colTwo}{\dimexpr#1\textwidth}
+  \setlength{\colOne}{\dimexpr\textwidth-\colTwo-\gutter\relax}
+  \noindent\begin{minipage}{\colOne}
+  #3
+  \end{minipage}
+  \hspace{\gutter}
+  \begin{minipage}{\colTwo}
+  \includegraphics[width=\colTwo]{#2}
+  \end{minipage}
+}
+\newcommand{\floatpictureleft}[3]{
+  \setlength{\colOne}{\dimexpr#1\textwidth}
+  \setlength{\colTwo}{\dimexpr\textwidth-\colOne-\gutter\relax}
+  \noindent\begin{minipage}{\colOne}
+  \includegraphics[width=\colOne]{#2}
+  \end{minipage}
+  \hspace{\gutter}
+  \begin{minipage}{\colTwo}
+  #3
+  \end{minipage}
+}
