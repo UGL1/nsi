@@ -7,14 +7,23 @@
 % Common
 \input{common.tex}
 
+
+% Footnotes formatting
+\makeatletter
+\renewcommand\@makefntext[1]{%
+\setlength\parindent{1em}%
+\noindent
+\mbox{\@thefnmark.~}{#1}}
+
+\makeatother
+
 % Title and section formatting
 \RequirePackage{titlesec}
-
 
 \renewcommand{\thechapter}{\arabic{chapter}}
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{
-    {\color{UGLiOrange!25!white}\arabic{section}.}\arabic{subsection}.
+{\color{UGLiOrange!25!white}\arabic{section}.}\arabic{subsection}.
 }
 
 \titleformat{\part}[block]
