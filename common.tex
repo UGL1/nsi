@@ -38,8 +38,22 @@
 \newcolumntype{C}{c!{\color{white}\vline}}
 \RequirePackage{numprint}
 \RequirePackage{enumitem}
+% to alternate row colors inside tables
+\newcommand{\alternaterowcolors}[1][UGLiBlue]{\rowcolors[]{1}{#1!10}{#1!0}}
 
-\newcommand{\alternaterowcolors}[1][UGLiBlue]{\rowcolors[]{1}{#1!10}{#1!0}} % to alternate row colors inside tables
+% default table style
+\newcommand{\tabulardefault}{
+  \arrayrulecolor{black}
+  \rowcolors[]{1}{white}{white}}
+
+% general table style
+\newcommand{\tabularstyled}[1][UGLiBlue]
+{
+  \arrayrulecolor{white}
+  \rowcolors[]{1}{#1!10}{#1!0}
+}
+
+
 \newcommand{\np}{\numprint}
 \setlength{\parindent}{0pt}
 \renewcommand{\baselinestretch}{1.2}
@@ -52,7 +66,7 @@
 
 % Boxes: Packages
 \RequirePackage[minted,most]{tcolorbox}
-\setminted{autogobble=true,breaklines=true}
+\setminted{autogobble=true,breaklines=true,tabsize=4}
 
 % Boxes: modubox (base box class)
 \newenvironment{modubox}[2]{
@@ -72,7 +86,7 @@
 
 % Boxes: various code environments inheriting from modubox
 \newenvironment*{encadrecolore}[2]{\begin{modubox}{#1}{#2}}{
-\end{modubox}}
+  \end{modubox}}
 
 \newenvironment*{pyc}{\begin{modubox}{Python}{UGLiPurple}}{
   \end{modubox}}
@@ -374,11 +388,11 @@
   \setlength{\colTwo}{\dimexpr#1\textwidth}
   \setlength{\colOne}{\dimexpr\textwidth-\colTwo-\gutter\relax}
   \noindent\begin{minipage}{\colOne}
-  #3
+    #3
   \end{minipage}
   \hspace{\gutter}
   \begin{minipage}{\colTwo}
-  \includegraphics[width=\colTwo]{#2}
+    \includegraphics[width=\colTwo]{#2}
   \end{minipage}
 }
 %\floatpictureleft{fraction}{imagefile}{text}
@@ -386,11 +400,11 @@
   \setlength{\colOne}{\dimexpr#1\textwidth}
   \setlength{\colTwo}{\dimexpr\textwidth-\colOne-\gutter\relax}
   \noindent\begin{minipage}{\colOne}
-  \includegraphics[width=\colOne]{#2}
+    \includegraphics[width=\colOne]{#2}
   \end{minipage}
   \hspace{\gutter}
   \begin{minipage}{\colTwo}
-  #3
+    #3
   \end{minipage}
 }
 %\floatpicturerightcaption{fraction}{imagefile}{caption}{text}
@@ -398,13 +412,13 @@
   \setlength{\colTwo}{\dimexpr#1\textwidth}
   \setlength{\colOne}{\dimexpr\textwidth-\colTwo-\gutter\relax}
   \noindent\begin{minipage}{\colOne}
-  #4
+    #4
   \end{minipage}
   \hspace{\gutter}
   \begin{minipage}{\colTwo}
-  \centering
-  \includegraphics[width=\colTwo]{#2}\\
-  \scriptsize #3
+    \centering
+    \includegraphics[width=\colTwo]{#2}\\
+    \scriptsize #3
   \end{minipage}
 }
 %\floatpictureleftcaption{fraction}{imagefile}{caption}{text}
@@ -412,12 +426,12 @@
   \setlength{\colOne}{\dimexpr#1\textwidth}
   \setlength{\colTwo}{\dimexpr\textwidth-\colOne-\gutter\relax}
   \noindent\begin{minipage}{\colOne}
-  \centering
-  \includegraphics[width=\colOne]{#2}\\
-  \scriptsize #3
+    \centering
+    \includegraphics[width=\colOne]{#2}\\
+    \scriptsize #3
   \end{minipage}
   \hspace{\gutter}
   \begin{minipage}{\colTwo}
-  #4
+    #4
   \end{minipage}
 }
