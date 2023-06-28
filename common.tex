@@ -44,13 +44,28 @@
 % default table style
 \newcommand{\tabulardefault}{
   \arrayrulecolor{black}
-  \rowcolors[]{1}{white}{white}}
+  \rowcolors{1}{white}{white}}
 
 % general table style
 \newcommand{\tabularstyled}[1][UGLiBlue]
 {
   \arrayrulecolor{white}
   \rowcolors[]{1}{#1!10}{#1!0}
+}
+
+% matrice environment to circumvent crippled pmatrix
+\newsavebox{\bmatrixbox}
+\newenvironment{matrice}
+  {\begin{lrbox}{\bmatrixbox}
+   \mathsurround=0pt
+   $\displaystyle
+   \begin{pmatrix}}
+  {\end{pmatrix}$%
+   \end{lrbox}%
+   \usebox{\bmatrixbox}%
+   \kern-\wd\bmatrixbox
+   \makebox[0pt][l]{$\left(\vphantom{\usebox{\bmatrixbox}}\right.$}%
+   \kern\wd\bmatrixbox
 }
 
 
