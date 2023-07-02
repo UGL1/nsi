@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{nsiexo}[2023/06/03 nsiexo]
+\ProvidesClass{nsiarticle}[2023/06/03 nsiarticle]
 
 % Parent class:
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -24,12 +24,12 @@
 {\Large\titlefont\color{UGLiBlue}} % Format for section title
 {\thesection} % Label
 {0em} % Separation between label and title
-{} % Code preceding the title
+{.~} % Code preceding the title
 
-\titleformat{\section}
-{\titlefont\color{UGLiBlue}} % Format for section title
-{\Large Exercice \thesection} % Label
-{.3ex} % Separation between label and title
+\titleformat{\subsection}
+{\large\titlefont\color{UGLiOrange}} % Format for section title
+{\thesubsection} % Label
+{0em} % Separation between label and title
 {} % Code preceding the title
 
 \titleformat{\subsubsection}

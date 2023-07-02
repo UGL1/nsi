@@ -8,61 +8,6 @@
 \setdefaultlanguage{french}
 
 
-% Fonts: Fira and Source Pro
-\RequirePackage{fontspec}
-% got rid of unicode-math, put amssymb instead : TOO SLOW
-%\RequirePackage{unicode-math}
-\RequirePackage{amssymb}
-
-\setromanfont{Fira Sans Light}[
-  BoldFont={Fira Sans},
-  ItalicFont={Fira Sans Light Italic},
-  BoldItalicFont={Fira Sans Italic}
-]
-
-\setsansfont{Fira Sans Light}[
-  BoldFont={Fira Sans},
-  ItalicFont={Fira Sans Light Italic},
-  BoldItalicFont={Fira Sans Italic}
-]
-\setmonofont{SourceCodePro-Light}[
-  BoldFont={SourceCodePro-Regular},
-  ItalicFont={SourceCodePro-LightIt},
-  BoldItalicFont={SourceCodePro-Italic},
-  Scale=0.9]
-
-\setfontfamily{\titlefont}{Fira Sans ExtraBold}[
-  BoldFont={Fira Sans ExtraBold},
-  ItalicFont={Fira Sans Extrabold Italic},
-  BoldItalicFont={Fira Sans Extrabold Italic}
-]
-
-\setfontfamily{\boxfont}{Fira Sans Bold}[
-  BoldFont={Fira Sans Bold},
-  ItalicFont={Fira Sans Bold Italic},
-  BoldItalicFont={Fira Sans Bold Italic}
-]
-
-\setfontfamily{\bigtitlefont}{Fira Sans ExtraBold}[
-  Scale=4,
-  BoldFont={Fira Sans ExtraBold},
-  ItalicFont={Fira Sans Extrabold Italic},
-  BoldItalicFont={Fira Sans Extrabold Italic}
-]
-
-% Colors
-\RequirePackage[table]{xcolor}
-
-\definecolor[named]{UGLiPurple}{HTML}{9F648C}
-\definecolor[named]{UGLiRed}{HTML}{cc2936}
-\definecolor[named]{UGLiOrange}{HTML}{eb8258}
-\definecolor[named]{UGLiYellow}{HTML}{CFB04A}
-\definecolor[named]{UGLiGreen}{HTML}{8FB349}
-\definecolor[named]{UGLiDarkGreen}{HTML}{248935}
-\definecolor[named]{UGLiBlue}{HTML}{267487}
-\definecolor[named]{UGLiDarkBlue}{HTML}{1F466D}
-
-
 % General text formatting
 \RequirePackage{colortbl}
 \newcolumntype{C}{c!{\color{white}\vline}}
@@ -131,6 +76,11 @@
 \newcommand{\question}{\addtocounter{questionnumber}{1}\textbf{\thequestionnumber.~}}
 \newcommand{\resetquestion}{\setcounter{questionnumber}{0}}
 
+% QCM
+\newlist{qcm}{enumerate}{1}
+\setlist[qcm]{label=\raisebox{-.2em}{\Large$\square$}\hspace*{1em}\textbf{\alph*.},leftmargin=*}
+
+
 
 % Boxes: Packages
 \RequirePackage[minted,most]{tcolorbox}
@@ -197,6 +147,7 @@
 
 
 % General math
+\newcommand\vv[1]{\overrightarrow{#1}}
 \newcommand\barmin[1]{\overline{#1\vphantom{b}}\,}
 \newcommand\barmaj[1]{\overline{#1\vphantom{X}}}
 \newcommand\card{\textrm{Card}}
@@ -242,6 +193,65 @@
 \newcommand\eme{$^{\textrm{e}}$\ }                                            % ème
 \newcommand{\er}{$^{\textrm{er}}$\ }                                          % er
 \newcommand{\ere}{$^{\textrm{re}}$\ }                                         % ère
+
+
+
+%\floatpictureright{fraction}{imagefile}{text}
+\newlength{\colOne}
+\newlength{\colTwo}
+\newlength{\gutter}
+\setlength{\gutter}{2em}
+\newcommand{\floatpictureright}[3]{
+  \setlength{\colTwo}{\dimexpr#1\textwidth}
+  \setlength{\colOne}{\dimexpr\textwidth-\colTwo-\gutter\relax}
+  \noindent\begin{minipage}{\colOne}
+    #3
+  \end{minipage}
+  \hspace{\gutter}
+  \begin{minipage}{\colTwo}
+    \includegraphics[width=\colTwo]{#2}
+  \end{minipage}
+}
+%\floatpictureleft{fraction}{imagefile}{text}
+\newcommand{\floatpictureleft}[3]{
+  \setlength{\colOne}{\dimexpr#1\textwidth}
+  \setlength{\colTwo}{\dimexpr\textwidth-\colOne-\gutter\relax}
+  \noindent\begin{minipage}{\colOne}
+    \includegraphics[width=\colOne]{#2}
+  \end{minipage}
+  \hspace{\gutter}
+  \begin{minipage}{\colTwo}
+    #3
+  \end{minipage}
+}
+%\floatpicturerightcaption{fraction}{imagefile}{caption}{text}
+\newcommand{\floatpicturerightcaption}[4]{
+  \setlength{\colTwo}{\dimexpr#1\textwidth}
+  \setlength{\colOne}{\dimexpr\textwidth-\colTwo-\gutter\relax}
+  \noindent\begin{minipage}{\colOne}
+    #4
+  \end{minipage}
+  \hspace{\gutter}
+  \begin{minipage}{\colTwo}
+    \centering
+    \includegraphics[width=\colTwo]{#2}\\
+    \scriptsize #3
+  \end{minipage}
+}
+%\floatpictureleftcaption{fraction}{imagefile}{caption}{text}
+\newcommand{\floatpictureleftcaption}[4]{
+  \setlength{\colOne}{\dimexpr#1\textwidth}
+  \setlength{\colTwo}{\dimexpr\textwidth-\colOne-\gutter\relax}
+  \noindent\begin{minipage}{\colOne}
+    \centering
+    \includegraphics[width=\colOne]{#2}\\
+    \scriptsize #3
+  \end{minipage}
+  \hspace{\gutter}
+  \begin{minipage}{\colTwo}
+    #4
+  \end{minipage}
+}
 
 
 % \division[2]{n}
@@ -432,59 +442,3 @@
 \fi{\number\numexpr#1-1}}
 \makeatother
 
-%\floatpictureright{fraction}{imagefile}{text}
-\newlength{\colOne}
-\newlength{\colTwo}
-\newlength{\gutter}
-\setlength{\gutter}{2em}
-\newcommand{\floatpictureright}[3]{
-  \setlength{\colTwo}{\dimexpr#1\textwidth}
-  \setlength{\colOne}{\dimexpr\textwidth-\colTwo-\gutter\relax}
-  \noindent\begin{minipage}{\colOne}
-    #3
-  \end{minipage}
-  \hspace{\gutter}
-  \begin{minipage}{\colTwo}
-    \includegraphics[width=\colTwo]{#2}
-  \end{minipage}
-}
-%\floatpictureleft{fraction}{imagefile}{text}
-\newcommand{\floatpictureleft}[3]{
-  \setlength{\colOne}{\dimexpr#1\textwidth}
-  \setlength{\colTwo}{\dimexpr\textwidth-\colOne-\gutter\relax}
-  \noindent\begin{minipage}{\colOne}
-    \includegraphics[width=\colOne]{#2}
-  \end{minipage}
-  \hspace{\gutter}
-  \begin{minipage}{\colTwo}
-    #3
-  \end{minipage}
-}
-%\floatpicturerightcaption{fraction}{imagefile}{caption}{text}
-\newcommand{\floatpicturerightcaption}[4]{
-  \setlength{\colTwo}{\dimexpr#1\textwidth}
-  \setlength{\colOne}{\dimexpr\textwidth-\colTwo-\gutter\relax}
-  \noindent\begin{minipage}{\colOne}
-    #4
-  \end{minipage}
-  \hspace{\gutter}
-  \begin{minipage}{\colTwo}
-    \centering
-    \includegraphics[width=\colTwo]{#2}\\
-    \scriptsize #3
-  \end{minipage}
-}
-%\floatpictureleftcaption{fraction}{imagefile}{caption}{text}
-\newcommand{\floatpictureleftcaption}[4]{
-  \setlength{\colOne}{\dimexpr#1\textwidth}
-  \setlength{\colTwo}{\dimexpr\textwidth-\colOne-\gutter\relax}
-  \noindent\begin{minipage}{\colOne}
-    \centering
-    \includegraphics[width=\colOne]{#2}\\
-    \scriptsize #3
-  \end{minipage}
-  \hspace{\gutter}
-  \begin{minipage}{\colTwo}
-    #4
-  \end{minipage}
-}

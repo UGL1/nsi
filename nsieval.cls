@@ -9,8 +9,11 @@
 
 
 
-% Common
-\include{common.tex}
+% Common stuff
+\input{fonts.tex}
+\input{colors.tex}
+\input{tikz.tex}
+\input{common.tex}
 
 % Title and section formatting
 \renewcommand{\thesection}{\arabic{section}}
@@ -54,21 +57,5 @@
 
 % Specific 
 \newcommand{\bareme}[1]{{\scriptsize\hfill\color{gray}\ldots~/ #1}}
-\newcommand{\petitscarreaux}[2]
-{
-    \begin{tikzpicture}
-        \draw[fill = white](0,0) rectangle (#1,#2);
-        \draw[thin,UGLiBlue!20,step=.5,ystep=.5](0,0) grid (#1,#2);
-        \draw[UGLiBlue!30,step=1,ystep=1](0,0) grid (#1,#2);
-    \end{tikzpicture}
-}
-\newcommand{\carreauxseyes}[2]
-{
-	\begin{tikzpicture}
-	\draw[fill = white](0,0) rectangle (#1,#2);
-	\draw[quadrillage@color!20,thin,ystep=.2,xstep=.8] (0,0) grid (#1,#2);
-	\draw[quadrillage@color!70,step=.8,ystep=.8](0,0) grid (#1,#2);
-	\end{tikzpicture}
-}
 
 

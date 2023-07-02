@@ -1,29 +1,39 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{nsibook}[2023/06/03 nsibook]
+
+% Parent class
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{book}}
 \ProcessOptions\relax
 \LoadClass{book}
 
 
-% Common
+% Common stuff
+
+\input{fonts.tex}
+\input{colors.tex}
+\input{tikz.tex}
 \input{common.tex}
 
+
 % Footnotes formatting
+
 \makeatletter
 \renewcommand\@makefntext[1]{%
-\setlength\parindent{1em}%
-\noindent
-\mbox{\@thefnmark.~}{#1}}
+    \setlength\parindent{1em}%
+    \noindent
+    \mbox{\@thefnmark.~}{#1}}
 
 \makeatother
 
 % Title and section formatting
+
 \RequirePackage{titlesec}
 
 \renewcommand{\thechapter}{\arabic{chapter}}
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand{\thesubsection}{
-{\color{UGLiOrange!25!white}\arabic{section}.}\arabic{subsection}.
+    {\color{UGLiOrange!25!white}\arabic{section}.}\arabic{subsection}.
 }
 
 \titleformat{\part}[block]
@@ -56,13 +66,16 @@
 {0em} % Separation between label and title
 {} % Code preceding the title
 
-% Specific
+% Class Specific
+
 \usepackage{float}
 \usepackage{caption}
 \captionsetup{font=scriptsize}
-\newcommand{\introduction}[1] 
-{\begin{flushright}\small
-\color{UGLiBlue}\textit{« #1 »}
-\end{flushright}}
+
+\newcommand{\introduction}[1] {
+    \begin{flushright}\small
+        \color{UGLiBlue}\textit{« #1 »}
+    \end{flushright}
+}
 
 
