@@ -1,0 +1,280 @@
+
+\definecolor{quadrillage@color}		{cmyk}	{1,0.2,0.3,0.1}
+\definecolor{pointbord@color}{named} {black}
+\definecolor{point@color}{named} {UGLiOrange}
+\definecolor{pointilles@color}		{rgb}	{.5,.5,.5}
+
+
+%_____________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\reperevl}[4] %(xmin,ymin,xmax,ymax)
+	{
+	\draw [thin, quadrillage@color](#1,#2) grid (#3,#4);
+	\draw [thick, black] (#1,0) -- (#3,0);
+	\draw [thick, black] (0,#2) -- (0,#4);
+	\draw [ black](0,0) node[below left] {O};
+	\draw [thick, ->,>=latex,black] (0,0) -- (1,0) node[midway,below]  {\footnotesize $\vv{\imath}$};
+	\draw [thick, ->,>=latex,black] (0,0) -- (0,1) node[midway,left]  {\footnotesize $\vv{\jmath}$};
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\reperev}[4] %(xmin,ymin,xmax,ymax)
+	{
+	\draw [very thin, color = quadrillage@color!50, step = .5](#1,#2) grid (#3,#4);
+	\draw [thin, color = quadrillage@color](#1,#2) grid (#3,#4);
+	\draw [thick,color = black] (#1,0) -- (#3,0);
+	\draw [thick,color = black] (0,#2) -- (0,#4);
+	\draw [color = black](0,0) node[below left] {O};
+	\draw [thick, ->,>=latex,color = black] (0,0) -- (1,0) node[midway,below]  {\footnotesize $\vv{\imath}$};
+	\draw [thick, ->,>=latex,color = black] (0,0) -- (0,1) node[midway,left]  {\footnotesize $\vv{\jmath}$};
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\repereal}[4] %(xmin,ymin,xmax,ymax)
+	{
+	\draw [thin, quadrillage@color](#1,#2) grid (#3,#4);
+	\draw [->,>=latex, thick] (#1,0) -- (#3,0);
+	\draw [->,>=latex, thick] (0,#2) -- (0,#4);
+	\draw (0,0) node[below left] {O};
+	\draw (1,0) node[below] {I} node {\tiny $|$};
+	\draw (0,1) node[left] {J} node[rotate =90] {\tiny $|$};
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\reperea}[4] %(xmin,ymin,xmax,ymax)
+	{
+	\draw [very thin, quadrillage@color!50, step = .5](#1,#2) grid (#3,#4);
+	\draw [thin, quadrillage@color](#1,#2) grid (#3,#4);
+	\draw [->,>=latex, thick] (#1,0) -- (#3,0);
+	\draw [->,>=latex, thick] (0,#2) -- (0,#4);
+	\draw (0,0) node[below left] {O};
+	\draw (1,0) node[below] {I} node {\tiny $|$};
+	\draw (0,1) node[left] {J} node[rotate =90] {\tiny $|$};
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\reperecompl}[4] %(xmin,ymin,xmax,ymax)
+	{
+	\draw [thin, quadrillage@color](#1,#2) grid (#3,#4);
+	\draw [->,>=latex, thick] (#1,0) -- (#3,0);
+	\draw [->,>=latex, thick] (0,#2) -- (0,#4);
+	\draw (0,0) node[below left] {$0$};
+	\draw (1,0) node[below] {$1$} node {\tiny $|$};
+	\draw (0,1) node[left] {$i$} node[rotate =90] {\tiny $|$};
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\reperecomp}[4] %(xmin,ymin,xmax,ymax)
+	{
+	\draw [very thin, quadrillage@color!50, step = .5](#1,#2) grid (#3,#4);
+	\draw [thin, quadrillage@color](#1,#2) grid (#3,#4);
+	\draw [->,>=latex, thick] (#1,0) -- (#3,0);
+	\draw [->,>=latex, thick] (0,#2) -- (0,#4);
+	\draw (0,0) node[below left] {0};
+	\draw (1,0) node[below] {1} node {\tiny $|$};
+	\draw (0,1) node[left] {$i$} node[rotate =90] {\tiny $|$};
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\reperec}[6] %(xmin,ymin,xmax,ymax,xlabel,ylabel)
+	{
+	\draw [very thin, quadrillage@color!50, step = .5](#1,#2) grid (#3,#4);
+	\draw [thin, quadrillage@color](#1,#2) grid (#3,#4);
+	\draw [->,>=latex, thick] (#1,0) -- (#3,0) ;
+	\draw (#3,0) node[below left]{\footnotesize #5};
+	\draw [->,>=latex, thick] (0,#2) -- (0,#4);
+	\draw (0,#4) node[rotate = 90, above left]{\footnotesize #6};
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\reperecl}[6] %(xmin,ymin,xmax,ymax,xlabel,ylabel)
+	{
+
+\draw [thin, quadrillage@color](#1,#2) grid (#3,#4);
+\draw [->,>=latex, thick] (#1,0) -- (#3,0) ;
+\draw (#3,0) node[below left]{\footnotesize #5};
+\draw [->,>=latex, thick] (0,#2) -- (0,#4);
+\draw (0,#4) node[rotate = 90, above left]{\footnotesize #6};
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+
+\newcommand{\ball}{node [circle,fill=pointbord@color, inner sep=.12em]{}node [circle,fill=point@color, inner sep=.08em]{}}
+\newcommand{\point}[3] %(x,y,name)
+	{
+	\draw [thick, pointilles@color, dashed](#1,0) -- (#1,#2) \ball -- (0,#2);
+	\ifthenelse{\( \lengthtest{#1 cm > 0 cm } \) \AND \( \lengthtest{#2 cm >0 cm } \)}
+		{\draw (#1,#2) node[above right]{#3};}
+		{}
+	\ifthenelse{\( \lengthtest{#1 cm > 0 cm } \) \AND \( \lengthtest{#2 cm<0 cm} \)}
+		{\draw (#1,#2) node[below right]{#3};}
+		{}
+	\ifthenelse{\( \lengthtest{ #1 cm < 0 cm} \) \AND \( \lengthtest{ #2 cm >0 cm} \)}
+		{\draw (#1,#2) node[above left]{#3};}
+		{}
+	\ifthenelse{\( \lengthtest{ #1 cm < 0 cm} \) \AND \( \lengthtest{ #2 cm <0 cm} \)}
+		{\draw (#1,#2) node[below left]{#3};}
+		{}
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\pointx}[3] %(x,y,name)
+	{
+	\draw [thick, pointilles@color, dashed](#1,0) -- (#1,#2) -- (0,#2);
+	\ifthenelse{\( \lengthtest{#1 cm > 0 cm } \) \AND \( \lengthtest{#2 cm >0 cm } \)}
+		{\draw (#1,#2) node[above right]{#3};}
+		{}
+	\ifthenelse{\( \lengthtest{#1 cm > 0 cm } \) \AND \( \lengthtest{#2 cm<0 cm} \)}
+		{\draw (#1,#2) node[below right]{#3};}
+		{}
+	\ifthenelse{\( \lengthtest{ #1 cm < 0 cm} \) \AND \( \lengthtest{ #2 cm >0 cm} \)}
+		{\draw (#1,#2) node[above left]{#3};}
+		{}
+	\ifthenelse{\( \lengthtest{ #1 cm < 0 cm} \) \AND \( \lengthtest{ #2 cm <0 cm} \)}
+		{\draw (#1,#2) node[below left]{#3};}
+		{}
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\pointc}[5] %(x,y,label1,label2,name)
+	{
+	\draw [thick, pointilles@color, dashed](#1,0) -- (#1,#2)\ball -- (0,#2);
+	\ifthenelse{\( \lengthtest{#1 cm > 0cm}\)\AND\( \lengthtest{#2 cm>0 cm }\)}
+		{\draw (#1,#2) node[above right]{#5};
+		 \draw (0,#2) node[left]{#4};
+		 \draw (#1,0) node[below]{#3};
+	}
+	{}
+	\ifthenelse{\(\lengthtest{#1 cm> 0 cm }\)\AND\( \lengthtest{ #2 cm<0 cm}\)}
+		{\draw (#1,#2) node[below right]{#5};
+			 \draw (0,#2) node[left]{#4};
+		 \draw (#1,0) node[above]{#3};}
+		{}
+	\ifthenelse{\(\lengthtest{#1cm < 0cm}\)\AND\(\lengthtest{#2cm>0cm}\)}
+		{\draw (#1,#2) node[above left]{#5};
+			 \draw (0,#2) node[right]{#4};
+		 \draw (#1,0) node[below]{#3};}
+		{}
+	\ifthenelse{\(\lengthtest{#1cm <0cm}\)\AND\(\lengthtest{#2cm<0cm}\)}
+		{\draw (#1,#2) node[below left]{#5};
+			 \draw (0,#2) node[right]{#4};
+		 \draw (#1,0) node[above]{#3};}
+		{}
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\pointcx}[5] %(x,y,label1,label2,name)
+	{
+	\draw [thick, pointilles@color, dashed](#1,0) -- (#1,#2) -- (0,#2);
+
+	\ifthenelse{\( \lengthtest{#1 cm > 0cm}\)\AND\( \lengthtest{#2 cm>0 cm }\)}
+		{\draw (#1,#2) node[above right]{#5};
+		 \draw (0,#2) node[left]{#4};
+		 \draw (#1,0) node[below]{#3};
+	}
+	{}
+	\ifthenelse{\(\lengthtest{#1 cm> 0 cm }\)\AND\( \lengthtest{ #2 cm<0 cm}\)}
+		{\draw (#1,#2) node[below right]{#5};
+			 \draw (0,#2) node[left]{#4};
+		 \draw (#1,0) node[above]{#3};}
+		{}
+	\ifthenelse{\(\lengthtest{#1cm < 0cm}\)\AND\(\lengthtest{#2cm>0cm}\)}
+		{\draw (#1,#2) node[above left]{#5};
+			 \draw (0,#2) node[right]{#4};
+		 \draw (#1,0) node[below]{#3};}
+		{}
+	\ifthenelse{\(\lengthtest{#1cm <0cm}\)\AND\(\lengthtest{#2cm<0cm}\)}
+		{\draw (#1,#2) node[below left]{#5};
+			 \draw (0,#2) node[right]{#4};
+		 \draw (#1,0) node[above]{#3};}
+		{}
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\carreaux}[2]
+	{
+	\carreauxseyes{#1}{#2}
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\case}{\tikz[baseline=.2em]{\draw[drop shadow, fill=white] (0,0) rectangle (1em,1em);}}
+\newcommand{\valide}[1]{\hfill #1 \case}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\qcmtrois}[4]																	% QCM : question puis trois choix
+	{
+	#1
+	\begin{enumerate}[\hspace*{2em}\bfseries a : \hspace*{-3em}\case\hspace*{3em}]
+	\item 	#2
+	\item 	#3
+	\item	#4\\
+\end{enumerate}
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\qcmquatre}[5]																	% QCM : question puis quatre choix
+	{
+	#1
+	\begin{enumerate}[\hspace*{2em}\bfseries a : \hspace*{-3em}\case\hspace*{3em}]
+	\item 	#2
+	\item 	#3
+	\item	#4
+	\item 	#5\\
+\end{enumerate}
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\secteur}[3]   % {x,y,angledepart,anglefin}
+	{
+	\draw (#1)  ++(#2:.2) arc (#2:#3:.2);
+	}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\touche}[1] %touche calculette
+{\tikz[baseline=.2em]{\draw[drop shadow ,fill=white,rounded corners=2pt] (0,0) rectangle (2em,1em);\draw (1em,.5em) node{\tiny{#1}};}}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\carreauxseyes}[2]
+{
+	\begin{tikzpicture}
+	\draw[fill = white](0,0) rectangle (#1,#2);
+	\draw[quadrillage@color!20,thin,ystep=.2,xstep=.8] (0,0) grid (#1,#2);
+	\draw[quadrillage@color!70,step=.8,ystep=.8](0,0) grid (#1,#2);
+	\end{tikzpicture}
+}
+
+\newcommand{\petitscarreaux}[2]
+{
+    \begin{tikzpicture}
+        \draw[fill = white](0,0) rectangle (#1,#2);
+        \draw[quadrillage@color!70,step=.5,ystep=.5](0,0) grid (#1,#2);
+    \end{tikzpicture}
+}
+
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\arbreproba}%arbre type bac tes {A}{B}{C}
+{\begin{tikzpicture}[grow = right,level distance=8em,level 1/.style={sibling distance=7em},
+level 2/.style={sibling distance=3em}]
+\node {}
+ child {node {\abdeux} child {node {\abquatre} edge from parent node[below=.5em] {\alsix}} child {node {\abtrois}edge from parent node[above=.5em]
+ {\alcinq}}edge from parent node[below=.5em] {\aldeux}}
+ child {node {\abun} child {node {\abquatre} edge from parent node[below=.5em] {\alquatre}} child {node {\abtrois}edge from parent node[above=.5em]
+ {\altrois}}edge from parent node[above=.5em] {\alun}};
+\end{tikzpicture}}
+
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\temps}[1]{\hfill
+\begin{tikzpicture}[baseline,yscale = 1.2]
+\draw [color = gray!50,fill = gray!50](.7ex,.2ex) arc(0:180:.2ex);
+\draw [color = gray!50,fill = gray!50](.7ex,0.8ex) arc(0:-180:.2ex);
+\draw[fill=gray!50] (0,0) rectangle (1ex,.2ex);
+\draw (.9ex,.2ex) arc(0:180:.4ex);
+\draw (.9ex,1ex) arc(0:-180:.4ex);
+\draw[color = gray!50] (.5ex,.3ex) -- (.5ex,.8ex);
+\draw[fill=gray!50] (0,1ex) rectangle+ (1ex,.2ex);
+\end{tikzpicture}\scriptsize{\textbf{\ #1min}}\normalsize}
+%_____________________________________________________________________________________________________________________________________________________________________________
+%
+\newcommand{\ligne}{\tikz{\draw (0,0)--(\linewidth,0);}}

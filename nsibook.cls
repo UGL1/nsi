@@ -4,9 +4,9 @@
 \ProcessOptions\relax
 \LoadClass{book}
 
+
 % Common
 \input{common.tex}
-
 
 % Footnotes formatting
 \makeatletter

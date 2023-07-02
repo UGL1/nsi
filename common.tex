@@ -8,17 +8,47 @@
 \setdefaultlanguage{french}
 
 
-% Fonts: Fira and JetBrains Mono
+% Fonts: Fira and Source Pro
 \RequirePackage{fontspec}
-\RequirePackage{unicode-math}
+% got rid of unicode-math, put amssymb instead : TOO SLOW
+%\RequirePackage{unicode-math}
+\RequirePackage{amssymb}
 
-\setromanfont[BoldFont={Fira Sans},ItalicFont={Fira Sans Light Italic}]{Fira Sans Light}
-\setsansfont[BoldFont={Fira Sans}]{Fira Sans Light}
-\setmonofont[BoldFont={SourceCodePro-Regular},ItalicFont={SourceCodePro-LightIt}]{SourceCodePro-Light}[Scale=0.9]
-\setfontfamily{\titlefont}{Fira Sans ExtraBold}
-\setfontfamily{\boxfont}{Fira Sans Bold}
-\setfontfamily{\bigtitlefont}{Fira Sans ExtraBold}[Scale=4]
+\setromanfont{Fira Sans Light}[
+  BoldFont={Fira Sans},
+  ItalicFont={Fira Sans Light Italic},
+  BoldItalicFont={Fira Sans Italic}
+]
 
+\setsansfont{Fira Sans Light}[
+  BoldFont={Fira Sans},
+  ItalicFont={Fira Sans Light Italic},
+  BoldItalicFont={Fira Sans Italic}
+]
+\setmonofont{SourceCodePro-Light}[
+  BoldFont={SourceCodePro-Regular},
+  ItalicFont={SourceCodePro-LightIt},
+  BoldItalicFont={SourceCodePro-Italic},
+  Scale=0.9]
+
+\setfontfamily{\titlefont}{Fira Sans ExtraBold}[
+  BoldFont={Fira Sans ExtraBold},
+  ItalicFont={Fira Sans Extrabold Italic},
+  BoldItalicFont={Fira Sans Extrabold Italic}
+]
+
+\setfontfamily{\boxfont}{Fira Sans Bold}[
+  BoldFont={Fira Sans Bold},
+  ItalicFont={Fira Sans Bold Italic},
+  BoldItalicFont={Fira Sans Bold Italic}
+]
+
+\setfontfamily{\bigtitlefont}{Fira Sans ExtraBold}[
+  Scale=4,
+  BoldFont={Fira Sans ExtraBold},
+  ItalicFont={Fira Sans Extrabold Italic},
+  BoldItalicFont={Fira Sans Extrabold Italic}
+]
 
 % Colors
 \RequirePackage[table]{xcolor}
@@ -38,34 +68,43 @@
 \newcolumntype{C}{c!{\color{white}\vline}}
 \RequirePackage{numprint}
 \RequirePackage{enumitem}
+
+
 % to alternate row colors inside tables
 \newcommand{\alternaterowcolors}[1][UGLiBlue]{\rowcolors[]{1}{#1!10}{#1!0}}
+
 
 % default table style
 \newcommand{\tabulardefault}{
   \arrayrulecolor{black}
-  \rowcolors{1}{white}{white}}
+  \rowcolors{1}{white}{white}
+}
+
 
 % general table style
-\newcommand{\tabularstyled}[1][UGLiBlue]
-{
+\newcommand{\tabularstyled}[1][UGLiBlue]{
   \arrayrulecolor{white}
   \rowcolors[]{1}{#1!10}{#1!0}
 }
 
+
+% table header cell style
+\newcommand{\ths}{\boxfont\bfseries\color{white}}
+
+
 % matrice environment to circumvent crippled pmatrix
 \newsavebox{\bmatrixbox}
 \newenvironment{matrice}
-  {\begin{lrbox}{\bmatrixbox}
-   \mathsurround=0pt
-   $\displaystyle
-   \begin{pmatrix}}
-  {\end{pmatrix}$%
-   \end{lrbox}%
-   \usebox{\bmatrixbox}%
-   \kern-\wd\bmatrixbox
-   \makebox[0pt][l]{$\left(\vphantom{\usebox{\bmatrixbox}}\right.$}%
-   \kern\wd\bmatrixbox
+{\begin{lrbox}{\bmatrixbox}
+    \mathsurround=0pt
+    $\displaystyle
+      \begin{pmatrix}}
+        {\end{pmatrix}$%
+  \end{lrbox}%
+  \usebox{\bmatrixbox}%
+  \kern-\wd\bmatrixbox
+  \makebox[0pt][l]{$\left(\vphantom{\usebox{\bmatrixbox}}\right.$}%
+  \kern\wd\bmatrixbox
 }
 
 
@@ -73,10 +112,24 @@
 \setlength{\parindent}{0pt}
 \renewcommand{\baselinestretch}{1.2}
 
-\newlist{enumalph}{enumerate}{1} % define a new list environment with lettered labels
+
+% define a new list environment with lettered labels
+\newlist{enumalph}{enumerate}{1}
 \setlist[enumalph]{label=\textbf{\alph*.},leftmargin=1.3em}
-\setlist[enumerate]{label=\textbf{\arabic*.},leftmargin=*} % beautify enumerate
-\setlist[itemize]{label=--,leftmargin=*} % beautify itemize
+
+
+% beautify enumerate
+\setlist[enumerate]{label=\textbf{\arabic*.},leftmargin=*}
+
+
+% beautify itemize
+\setlist[itemize]{label=--,leftmargin=*}
+
+
+% enumerate-like \question command with no indentation at all
+\newcounter{questionnumber}
+\newcommand{\question}{\addtocounter{questionnumber}{1}\textbf{\thequestionnumber.~}}
+\newcommand{\resetquestion}{\setcounter{questionnumber}{0}}
 
 
 % Boxes: Packages
@@ -99,57 +152,49 @@
     }
     {\end{tcolorbox}}
 
+
 % Boxes: various code environments inheriting from modubox
 \newenvironment*{encadrecolore}[2]{\begin{modubox}{#1}{#2}}{
   \end{modubox}}
-
 \newenvironment*{pyc}{\begin{modubox}{Python}{UGLiPurple}}{
   \end{modubox}}
-
 \newenvironment*{pys}{\begin{modubox}{Python}{UGLiPurple}}{
   \end{modubox}}
-
 \newenvironment*{html}{\begin{modubox}{HTML}{UGLiGreen}}{
   \end{modubox}}
-
 \newenvironment*{css}{\begin{modubox}{CSS}{UGLiOrange}}{
   \end{modubox}}
-
 \newenvironment*{js}{\begin{modubox}{Javascript}{UGLiBlue}}{
   \end{modubox}}
-
 \newenvironment*{cpp}{\begin{modubox}{C++}{UGLiOrange}}{
   \end{modubox}}
-
 \newenvironment*{clang}{\begin{modubox}{C}{UGLiOrange}}{
   \end{modubox}}
 
+
 % Boxes: various text environments inheriting from modubox
 \newenvironment*{definition}[1][]{\begin{modubox}{Définition#1}{UGLiGreen}}{\end{modubox}}
-
 \newenvironment*{notation}[1][]{\begin{modubox}{Notation#1}{UGLiBlue}}{\end{modubox}}
-
 \newenvironment*{exemple}[1][]{\begin{modubox}{Exemple#1}{UGLiBlue}}{\end{modubox}}
-
-
 \newenvironment*{propriete}[1][]{\begin{modubox}{Propriété#1}{UGLiRed}}{\end{modubox}}
-
 \newenvironment*{methode}[1][]{\begin{modubox}{Méthode#1}{UGLiPurple}}{\end{modubox}}
-
 \newenvironment*{remarque}[1][]{\begin{modubox}{Remarque#1}{UGLiBlue}}{\end{modubox}}
-
 \newenvironment*{aretenir}[1][]{\begin{modubox}{À retenir#1}{UGLiGreen}}{\end{modubox}}
+\newenvironment*{demonstration}[1][]{\begin{modubox}{Preuve#1}{gray}}{\end{modubox}}
 
 % Boxes: exo
 \newcounter{exonumber}
 \setcounter{exonumber}{0}
-\newenvironment*{exercice}[1][]{\stepcounter{exonumber}\begin{modubox}{Exercice \theexonumber #1
-    }{UGLiOrange}}{\end{modubox}}
+\newenvironment*{exercice}[1][]
+{\stepcounter{exonumber}\begin{modubox}{Exercice \theexonumber #1}{UGLiOrange}}
+    {\end{modubox}}
+
 
 % Backwards compatibility with old versions
 \newcommand{\pythoninline}[1]{\mintinline{python}{#1}}
 \newcommand{\og}{«}
 \newcommand{\fg}{»}
+
 
 % General math
 \newcommand\barmin[1]{\overline{#1\vphantom{b}}\,}
@@ -197,13 +242,6 @@
 \newcommand\eme{$^{\textrm{e}}$\ }                                            % ème
 \newcommand{\er}{$^{\textrm{er}}$\ }                                          % er
 \newcommand{\ere}{$^{\textrm{re}}$\ }                                         % ère
-
-
-
-
-\newcounter{questionnumber}
-\newcommand{\question}{\addtocounter{questionnumber}{1}\textbf{\thequestionnumber.~}}
-\newcommand{\resetquestion}{\setcounter{questionnumber}{0}}
 
 
 % \division[2]{n}
