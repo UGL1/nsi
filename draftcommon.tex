@@ -5,6 +5,7 @@
 \RequirePackage{amssymb}
 
 % General text formatting
+\RequirePackage{multicol}
 \RequirePackage{colortbl}
 \newcolumntype{C}{c!{\color{white}\vline}}
 \RequirePackage{numprint}
@@ -30,7 +31,7 @@
 
 
 % table header cell style
-\newcommand{\ths}{\bfseries\color{white}}
+\newcommand{\ths}{\boxfont\bfseries\color{white}\boldmath}
 
 
 % matrice environment to circumvent crippled pmatrix
@@ -138,6 +139,13 @@
 
 % Backwards compatibility with old versions
 \newcommand{\pythoninline}[1]{\mintinline{python}{#1}}
+
+
+% General
+\newcommand\seconde{2$^{\textrm{nde}}$}                                             % 2nde
+\newcommand\premiere{1$^{\textrm{ère}}$}                                           	% 1
+\newcommand\premiereSTMG{1$^{\textrm{ère}}$ STMG}                                   % 1STMG
+\newcommand\terminale{T$^{\textrm{ale}}$}                                           % Term
 
 
 % General math
