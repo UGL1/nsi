@@ -1,30 +1,6 @@
-\documentclass{draftnsiarticle}
+\documentclass{nsiarticle}
 \begin{document}
-%\newcommand{\alternaterowcolors}[1][UGLiBlue]{\rowcolors[]{1}{#1!10}{#1!0}}
 
-% \newcommand{\tabulardefault}{
-%  \arrayrulecolor{black}
-%  \rowcolors{1}{white}{white}
-%}
-%\newcommand{\tabularstyled}[1][UGLiBlue]{
-%  \arrayrulecolor{white}
-% \rowcolors[]{1}{#1!10}{#1!0}
-%}
-%\newcommand{\ths}{\boxfont\bfseries\color{white}\boldmath}
-
-%
-
-\newcommand{\UGLiTabBackground}{white}
-\newcommand{\tabstyle}[1][UGLiOrange]{
-    \renewcommand{\UGLiTabBackground}{#1}
-    \arrayrulecolor{white}
-    \rowcolors[]{1}{#1!10}{#1!0}
-}
-\newcommand{\ccell}{\cellcolor{\UGLiTabBackground}\boxfont\bfseries\color{white}\boldmath}
-\newcommand{\tabdefault}{
-    \arrayrulecolor{black}
-    \rowcolors{1}{white}{white}
-}
 \begin{tabular}{|c|c|c|}
     a & z & e \\
     a & z & e \\
@@ -32,16 +8,16 @@
     a & z & e \\
 \end{tabular}
 
-\tabstyle
+\tabularstyled
 
 \begin{tabular}{|c|c|c|}
-    \ccell   a &  z &  e \\
+    \rowcolor{UGLiBlue}\ths  a &  z &  e \\
     a           & z        & e        \\
     a           & z        & e        \\
     a           & z        & e        \\
 \end{tabular}
 
-\tabdefault
+\tabulardefault
 
 \begin{tabular}{|c|c|c|}
     \ccell   a &  z &  e \\
@@ -58,7 +34,4 @@
     a           & z        & e        \\
     a           & z        & e        \\
 \end{tabular}
-
-coucou 
-
 \end{document}

@@ -1,13 +1,3 @@
-% Microtype (use LuaLaTeX for complete support)
-\RequirePackage{microtype}
-
-
-% Polyglossia: french
-\RequirePackage{polyglossia}
-
-\setdefaultlanguage{french}
-
-
 % General text formatting
 \RequirePackage{multicol}
 \RequirePackage{colortbl}
@@ -15,38 +5,26 @@
 \RequirePackage{numprint}
 \RequirePackage{enumitem}
 
+% to alternate row colors inside tables
 \newcommand{\alternaterowcolors}[1][UGLiBlue]{\rowcolors[]{1}{#1!10}{#1!0}}
+
+
+% default table style
 \newcommand{\tabulardefault}{
   \arrayrulecolor{black}
   \rowcolors{1}{white}{white}
 }
+
+
+% general table style
 \newcommand{\tabularstyled}[1][UGLiBlue]{
   \arrayrulecolor{white}
   \rowcolors[]{1}{#1!10}{#1!0}
 }
+
+% table header cell style
 \newcommand{\ths}{\boxfont\bfseries\color{white}\boldmath}
-%>>>>>>>>>>>>>>>>> DEPRECATED : END
 
-\newcommand{\UGLiTabBackground}{white}
-
-
-% new tab style
-\newcommand{\tabstyle}[1][UGLiOrange]{
-    \renewcommand{\UGLiTabBackground}{#1}
-    \arrayrulecolor{white}
-    \rowcolors[]{1}{#1!10}{#1!0}
-}
-
-
-% colored cell
-\newcommand{\ccell}{\cellcolor{\UGLiTabBackground}\boxfont\bfseries\color{white}\boldmath}
-
-
-% default tab style
-\newcommand{\tabdefault}{
-    \arrayrulecolor{black}
-    \rowcolors{1}{white}{white}
-}
 
 % matrice environment to circumvent crippled pmatrix
 \newsavebox{\bmatrixbox}
@@ -460,4 +438,3 @@
   \expandafter\@gobble
 \fi{\number\numexpr#1-1}}
 \makeatother
-
