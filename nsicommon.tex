@@ -214,13 +214,14 @@
 \newlength{\colTwo}
 \newlength{\gutter}
 \setlength{\gutter}{2em}
+
 \newcommand{\floatpictureright}[3]{
   \setlength{\colTwo}{\dimexpr#1\textwidth}
   \setlength{\colOne}{\dimexpr\textwidth-\colTwo-\gutter\relax}
   \noindent\begin{minipage}{\colOne}
     #3
   \end{minipage}
-  \hspace{\gutter}
+  \hspace{\dimexpr\gutter-.5em\relax}
   \begin{minipage}{\colTwo}
     \includegraphics[width=\colTwo]{#2}
   \end{minipage}
@@ -232,7 +233,7 @@
   \noindent\begin{minipage}{\colOne}
     \includegraphics[width=\colOne]{#2}
   \end{minipage}
-  \hspace{\gutter}
+  \hspace{\dimexpr\gutter-.5em\relax}
   \begin{minipage}{\colTwo}
     #3
   \end{minipage}
@@ -244,7 +245,7 @@
   \noindent\begin{minipage}{\colOne}
     #4
   \end{minipage}
-  \hspace{\gutter}
+  \hspace{\dimexpr\gutter-.5em\relax}
   \begin{minipage}{\colTwo}
     \centering
     \includegraphics[width=\colTwo]{#2}\\
@@ -260,7 +261,7 @@
     \includegraphics[width=\colOne]{#2}\\
     \scriptsize #3
   \end{minipage}
-  \hspace{\gutter}
+  \hspace{\dimexpr\gutter-.5em\relax}
   \begin{minipage}{\colTwo}
     #4
   \end{minipage}
