@@ -203,12 +203,43 @@
 
 
 
-%\floatpictureright{fraction}{imagefile}{text}
+
 \newlength{\colOne}
 \newlength{\colTwo}
 \newlength{\gutter}
 \setlength{\gutter}{2em}
 
+
+
+%\dleft{absolute left length}{content1}{content2}
+\newcommand{\dleft}[3]{
+    \setlength{\colOne}{#1}
+    \setlength{\colTwo}{\dimexpr\textwidth-\colOne-\gutter\relax}
+    \noindent\begin{minipage}{\colOne}
+    #2
+    \end{minipage}
+    \hspace{\dimexpr\gutter-.5em\relax}
+    \begin{minipage}{\colTwo}
+    #3
+    \end{minipage}
+}
+
+
+%\dright{absolute right length}{content1}{content2}
+\newcommand{\dright}[3]{
+    \setlength{\colTwo}{#1}
+    \setlength{\colOne}{\dimexpr\textwidth-\colOne-\gutter\relax}
+    \noindent\begin{minipage}{\colOne}
+    #2
+    \end{minipage}
+    \hspace{\dimexpr\gutter-.5em\relax}
+    \begin{minipage}{\colTwo}
+    #3
+    \end{minipage}
+}
+
+
+%\floatpictureright{fraction}{imagefile}{text}
 \newcommand{\floatpictureright}[3]{
   \setlength{\colTwo}{\dimexpr#1\textwidth}
   \setlength{\colOne}{\dimexpr\textwidth-\colTwo-\gutter\relax}
@@ -220,6 +251,10 @@
     \includegraphics[width=\colTwo]{#2}
   \end{minipage}
 }
+% alias picright
+\newcommand{\picright}[3]{\floatpictureright{#1}{#2}{#3}}
+
+
 %\floatpictureleft{fraction}{imagefile}{text}
 \newcommand{\floatpictureleft}[3]{
   \setlength{\colOne}{\dimexpr#1\textwidth}
@@ -232,6 +267,10 @@
     #3
   \end{minipage}
 }
+% alias picleft
+\newcommand{\picleft}[3]{\floatpictureleft{#1}{#2}{#3}}
+
+
 %\floatpicturerightcaption{fraction}{imagefile}{caption}{text}
 \newcommand{\floatpicturerightcaption}[4]{
   \setlength{\colTwo}{\dimexpr#1\textwidth}
@@ -246,6 +285,10 @@
     \scriptsize #3
   \end{minipage}
 }
+% alias picrightc
+\newcommand{\picrightc}[4]{\floatpicturerightcaption{#1}{#2}{#3}{#4}}
+
+
 %\floatpictureleftcaption{fraction}{imagefile}{caption}{text}
 \newcommand{\floatpictureleftcaption}[4]{
   \setlength{\colOne}{\dimexpr#1\textwidth}
@@ -260,13 +303,13 @@
     #4
   \end{minipage}
 }
+% alias picleftc
+\newcommand{\picleftc}[4]{\floatpictureleftcaption{#1}{#2}{#3}{#4}}
 
 
 
-
-
+%old stuff
 \newcommand{\bareme}[1]{{\scriptsize\hfill\color{gray}\ldots~/ #1}}
-
 \usepackage{float}
 \usepackage{caption}
 \captionsetup{font=scriptsize}
