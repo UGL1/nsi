@@ -177,7 +177,7 @@
             \hrule}\ \\[1em]
             }        
         
-        \if
+        \fi
     \fi
 \fi%
 
