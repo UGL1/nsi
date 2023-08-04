@@ -1,4 +1,4 @@
-\documentclass{nsiarticle}
+\documentclass[article]{nsi}
 \begin{document}
 
 \begin{tabular}{|c|c|c|}
@@ -8,30 +8,33 @@
     a & z & e \\
 \end{tabular}
 
-\tabularstyled
+\tabstyled
+
+\begin{pyc}
+    \begin{tabular}{|c|c|c|}
+        \ccell  a & \ccell  z & \ccell e \\
+        a         & z         & e        \\
+        a         & z         & e        \\
+        a         & z         & e        \\
+    \end{tabular}
+
+\end{pyc}
+
+\tabdefault
 
 \begin{tabular}{|c|c|c|}
-    \rowcolor{UGLiBlue}\ths  a &  z &  e \\
-    a           & z        & e        \\
-    a           & z        & e        \\
-    a           & z        & e        \\
-\end{tabular}
-
-\tabulardefault
-
-\begin{tabular}{|c|c|c|}
-    \ccell   a &  z &  e \\
-    a           & z        & e        \\
-    a           & z        & e        \\
-    a           & z        & e        \\
+    \ccell   a & z & e \\
+    a          & z & e \\
+    a          & z & e \\
+    a          & z & e \\
 \end{tabular}
 
 \tabstyle[UGLiGreen]
 
 \begin{tabular}{|c|c|c|}
-    \ccell   a &  z &  e \\
-    a           & z        & e        \\
-    a           & z        & e        \\
-    a           & z        & e        \\
+    \ccell   a & z & e \\
+    a          & z & e \\
+    a          & z & e \\
+    a          & z & e \\
 \end{tabular}
 \end{document}
