@@ -1,28 +1,56 @@
-\documentclass[exos]{nsi}
-\titre{Classes \texttt{NSI}}
-\classe{2023-06}
+\documentclass[12pt,a4paper,article]{nsi} % ou eval ou exos ou article
 \begin{document}
+
+\titre{Classe NSI}
+\classe{2023-09}
 \maketitle
 
-\section{Classes et options}
-4 classes sont disponibles :
+\subsection*{changelog}
 \begin{itemize}
-    \item \texttt{nsibook}, qui hérite de la classe \texttt{book} ;
-    \item \texttt{nsieval}, qui hérite de la classe \texttt{article} ;
-    \item \texttt{nsiarticle}, qui hérite de la classe \texttt{article} ;
-    \item \texttt{nsiexo}, qui hérite également de la classe \texttt{article} ;
+    \item 2023-09 : changement majeur de l'appel de classe en 1\ere ligne de document.\\
+          rectifications et tests.
+\end{itemize}    
+
+
+\section*{Options}
+
+\begin{encadrecolore}{Attention}{UGLiRed}
+    Désormais les classes \texttt{nsibook}, \texttt{draftnsibook} et autres n'existent plus. Une seule classe est présente : la classe \texttt{nsi}.
+\end{encadrecolore}
+
+
+Il est possible de passer à la classe toutes les options \textit{traditionnelles} des classes \texttt{book} ou \texttt{article} : \texttt{12pt} ou \texttt{11pt}, \texttt{a4paper} \textit{et cætera}.\\
+
+En plus de ces options traditionnelles
+\begin{itemize}
+    \item \texttt{cours} sert à fabriquer des chapitres de cours ;
+    \item \texttt{exos} sert à fabriquer des feuilles d'exercices ;
+    \item \texttt{eval} sert à fabriquer des évaluations ;
+    \item \texttt{article} sert à fabriquer de cours documents (ressemble beaucoup à \texttt{exos}).
 \end{itemize}
-Ainsi les options disponibles pour \texttt{book} ou pour les autres classes le restent.
+\begin{exemple}[ : création d'une feuille d'exercices]
+    \begin{minted}[bgcolor=yellow!10!white]{latex}
+        % Anciennement on écrivait
+        % \documentclass[12pt,a4paper]{nsiexos} % ou draftnsiexos
+        \documentclass[12pt,a4paper,exos]{nsi}
+            \classe{\seconde 4}
+            \titre{Feuille n°1}
+            \begin{document}
+                \maketitle
+            \end{document}
+        \end{minted}
+\end{exemple}
+Pour tous types de documents, \mintinline{latex}|\maketitle|  utilise \mintinline{latex}{\titre} et \mintinline{latex}{\classe}, sauf \texttt{cours} qui n'utilise pas cette dernière.
 
-\begin{minted}[bgcolor=yellow!10!white]{latex}
-\documentclass[12pt,a4paper]{nsibook} % ou 10pt, ou 11pt
-    \begin{document}
-        ...
-    \end{document}
-\end{minted}
+\section*{Compilation}
 
+Lorsque le document est compilé avec pdf\LaTeX, la compilation est plus rapide mais les polices de caractères de base sont utilisées.
 
-\section{Environnements}
+Avec Lua\LaTeX, la compilation est plus lente mais les polices Fira Sans et Source Code Pro sont chargées.
+
+L'option pdf\LaTeX{} est une bonne manière de préparer le travail, surtout sous Windows car la compilation est très lente.
+
+\section*{Environnements}
 \subsection*{Définition}
 \begin{minted}[bgcolor=yellow!10!white]{latex}
     \begin{definition}[ : précision]
@@ -87,7 +115,7 @@ Ainsi les options disponibles pour \texttt{book} ou pour les autres classes le r
     contenu
 \end{aretenir}
 
-\section{Pour le code}
+\subsection*{Pour le code}
 \begin{minted}[bgcolor=yellow!10!white]{latex}
 \begin{pyc}
     \begin{minted}{python}
@@ -120,7 +148,7 @@ Je veux vous parler de la fonction \mintinline{python}{print} de \textsc{Python}
     contenu
 \end{encadrecolore}
 
-\section{Environnements énumératifs}
+\section*{Environnements énumératifs}
 \subsection*{Liste ordonnée}
 \begin{minted}[bgcolor=yellow!10!white]{latex}
 \begin{enumerate}
@@ -160,13 +188,13 @@ Une question à choix multiples
 \end{qcm}
 \end{minted}
 Une question à choix multiples
-    \begin{qcm}
-        \item Réponse 1
-        \item Réponse 2
-        \item Réponse 3
+\begin{qcm}
+    \item Réponse 1
+    \item Réponse 2
+    \item Réponse 3
 \end{qcm}
 
-\section{Couleurs}
+\section*{Couleurs}
 \begin{minted}[bgcolor=yellow!10!white]{latex}
     \color{UGLiPurple} UGLiPurple \\
     \color{UGLiRed} UGLiRed \\
@@ -186,82 +214,112 @@ Une question à choix multiples
 \color{UGLiBlue} UGLiBlue \\
 \color{UGLiDarkBlue} UGLiDarkBlue \color{black}
 
-\section{Tables}
+\section*{Tables}
+
+Le style de table par défaut est selectionnable avec \mintinline{latex}{\tabdefaut} (ou \mintinline{latex}{\tabulardefaut} pour rétrocompatibilité).
 
 \begin{minted}[bgcolor=yellow!10!white]{latex}
-    \tabularstyled
-    \begin{tabular}{c|c|c}
-        \rowcolor{UGLiOrange}
-        \ths Colonne 1 & \ths Colonne 2 & \ths Colonne 3 \\
-        Valeur 1 & Valeur 2 & Valeur 3 \\
-        Valeur 4 & Valeur 5 & Valeur 6 \\
-        Valeur 7 & Valeur 8 & Valeur 9 \\
-        Valeur 10 & Valeur 11 & Valeur 12 \\
-        Valeur 13 & Valeur 14 & Valeur 15 \\
-    \end{tabular}    
-\end{minted}
-\tabularstyled
-\begin{tabular}{c|c|c}
-    \rowcolor{UGLiOrange}
-    \ths Colonne 1 & \ths Colonne 2 & \ths Colonne 3 \\
-    Valeur 1       & Valeur 2       & Valeur 3       \\
-    Valeur 4       & Valeur 5       & Valeur 6       \\
-    Valeur 7       & Valeur 8       & Valeur 9       \\
-    Valeur 10      & Valeur 11      & Valeur 12      \\
-    Valeur 13      & Valeur 14      & Valeur 15      \\
-\end{tabular}
-
-\begin{minted}[bgcolor=yellow!10!white]{latex}
-    \tabularstyled[UGLiPurple]
-    \begin{tabular}{c|c|c}
-        \rowcolor{UGLiPurple}
-        \ths Colonne 1 & \ths Colonne 2 & \ths Colonne 3 \\
-        Valeur 1 & Valeur 2 & Valeur 3 \\
-        Valeur 4 & Valeur 5 & Valeur 6 \\
-        Valeur 7 & Valeur 8 & Valeur 9 \\
-        Valeur 10 & Valeur 11 & Valeur 12 \\
-        Valeur 13 & Valeur 14 & Valeur 15 \\
-    \end{tabular}    
-\end{minted}
-\tabularstyled[UGLiPurple]
-\begin{tabular}{c|c|c}
-    \rowcolor{UGLiPurple}
-    \ths Colonne 1 & \ths Colonne 2 & \ths Colonne 3 \\
-    Valeur 1       & Valeur 2       & Valeur 3       \\
-    Valeur 4       & Valeur 5       & Valeur 6       \\
-    Valeur 7       & Valeur 8       & Valeur 9       \\
-    Valeur 10      & Valeur 11      & Valeur 12      \\
-    Valeur 13      & Valeur 14      & Valeur 15      \\
-\end{tabular}
-\begin{minted}[bgcolor=yellow!10!white]{latex}
-    \tabulardefault
-    \begin{tabular}{|c|c|c|}
-        \hline
-         Colonne 1 & Colonne 2 & Colonne 3 \\
-        \hline
-        Valeur 1 & Valeur 2 & Valeur 3 \\
-        Valeur 4 & Valeur 5 & Valeur 6 \\
-        Valeur 7 & Valeur 8 & Valeur 9 \\
-        Valeur 10 & Valeur 11 & Valeur 12 \\
-        Valeur 13 & Valeur 14 & Valeur 15 \\
-        \hline
-    \end{tabular}
-\end{minted}
-\tabulardefault
+\tabdefault
 \begin{tabular}{|c|c|c|}
     \hline
-    Colonne 1 & Colonne 2 & Colonne 3 \\
-    \hline
-    Valeur 1  & Valeur 2  & Valeur 3  \\
-    Valeur 4  & Valeur 5  & Valeur 6  \\
-    Valeur 7  & Valeur 8  & Valeur 9  \\
-    Valeur 10 & Valeur 11 & Valeur 12 \\
-    Valeur 13 & Valeur 14 & Valeur 15 \\
-    \hline
+    Colonne 1 & Colonne 2 & Colonne 3 \\\hline
+    Valeur 1  & Valeur 2  & Valeur 3  \\\hline
+    Valeur 4  & Valeur 5  & Valeur 6  \\\hline
+    Valeur 7  & Valeur 8  & Valeur 9  \\\hline
+    Valeur 10 & Valeur 11 & Valeur 12 \\\hline
+    Valeur 13 & Valeur 14 & Valeur 15 \\\hline
 \end{tabular}
+\end{minted}
+\tabdefault
+\begin{tabular}{|c|c|c|}
+    \hline
+    Colonne 1 & Colonne 2 & Colonne 3 \\\hline
+    Valeur 1  & Valeur 2  & Valeur 3  \\\hline
+    Valeur 4  & Valeur 5  & Valeur 6  \\\hline
+    Valeur 7  & Valeur 8  & Valeur 9  \\\hline
+    Valeur 10 & Valeur 11 & Valeur 12 \\\hline
+    Valeur 13 & Valeur 14 & Valeur 15 \\\hline
+\end{tabular}\\
 
-\section{Mise en page}
+On peut styler les tables avec \mintinline{latex}{\tabstyle[couleur]} (ou \mintinline{latex}{\tabularstyle[couleur]} pour rétrocompatibilité)
 
+\begin{minted}[bgcolor=yellow!10!white]{latex}
+    \tabstyle[UGLiGreen]
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Colonne 1 & Colonne 2 & Colonne 3 \\\hline
+        Valeur 1  & Valeur 2  & Valeur 3  \\\hline
+        Valeur 4  & Valeur 5  & Valeur 6  \\\hline
+        Valeur 7  & Valeur 8  & Valeur 9  \\\hline
+        Valeur 10 & Valeur 11 & Valeur 12 \\\hline
+        Valeur 13 & Valeur 14 & Valeur 15 \\\hline
+    \end{tabular}
+    \end{minted}
+\tabstyle[UGLiGreen]
+\begin{tabular}{|c|c|c|}
+    \hline
+    Colonne 1 & Colonne 2 & Colonne 3 \\\hline
+    Valeur 1  & Valeur 2  & Valeur 3  \\\hline
+    Valeur 4  & Valeur 5  & Valeur 6  \\\hline
+    Valeur 7  & Valeur 8  & Valeur 9  \\\hline
+    Valeur 10 & Valeur 11 & Valeur 12 \\\hline
+    Valeur 13 & Valeur 14 & Valeur 15 \\\hline
+\end{tabular}\\
+
+\`A l'intérieur d'un tableau stylé on peut utiliser la commande \mintinline{latex}{\ccell} ( ou \mintinline{latex}{\ths} pour rétrocompatibilité) pour obtenir une cellule d'en-tête.
+Pour une cellule blanche, utiliser \mintinline{latex}{\bcell}
+
+
+\begin{minted}[bgcolor=yellow!10!white,fontsize=\small]{latex}
+    \tabstyle[UGLiOrange]
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \bcell           & \ccell Colonne 2 & \ccell Colonne 3  \\\hline
+        \ccell Valeur 1  & Valeur 2         & Valeur 3          \\\hline
+        \ccell Valeur 4  & Valeur 5         & Valeur 6          \\\hline
+        \ccell Valeur 7  & Valeur 8         & Valeur 9          \\\hline
+    \end{tabular}
+    \end{minted}
+\tabstyle[UGLiGreen]
+\tabstyle[UGLiOrange]
+\begin{tabular}{|c|c|c|}
+    \hline
+    \bcell          & \ccell Colonne 2 & \ccell Colonne 3 \\\hline
+    \ccell Valeur 1 & Valeur 2         & Valeur 3         \\\hline
+    \ccell Valeur 4 & Valeur 5         & Valeur 6         \\\hline
+    \ccell Valeur 7 & Valeur 8         & Valeur 9         \\\hline
+\end{tabular}\\
+
+Lors de l'insertion d'une table dans un environnement, si le style des tables n'est pas \mintinline{latex}{\tabdefaut}, les couleurs de la table suivent celles de l'environnement :
+\begin{minted}[bgcolor=yellow!10!white,fontsize=\small]{latex}
+    \begin{exemple}[]
+        \begin{tabular}{|c|c|c|}
+            \hline
+            \bcell           & \ccell Colonne 2 & \ccell Colonne 3  \\\hline
+            \ccell Valeur 1  & Valeur 2         & Valeur 3          \\\hline
+            \ccell Valeur 4  & Valeur 5         & Valeur 6          \\\hline
+            \ccell Valeur 7  & Valeur 8         & Valeur 9          \\\hline
+        \end{tabular}        
+    \end{exemple}   
+\end{minted}
+\begin{exemple}[]
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \bcell          & \ccell Colonne 2 & \ccell Colonne 3 \\\hline
+        \ccell Valeur 1 & Valeur 2         & Valeur 3         \\\hline
+        \ccell Valeur 4 & Valeur 5         & Valeur 6         \\\hline
+        \ccell Valeur 7 & Valeur 8         & Valeur 9         \\\hline
+    \end{tabular}
+\end{exemple}
+
+\section*{Mise en page}
+
+Avec les commandes
+\begin{itemize}
+    \item \mintinline{latex}{\picleft{fraction}{fichier}{texte}} ( ou \mintinline{latex}{\floatpictureleft} pour rétrocompatibilité) ;
+    \item \mintinline{latex}{\picleftc{fraction}{fichier}{legende}{texte}} ( ou \mintinline{latex}{\floatpictureleftcaption} pour rétrocompatibilité) ;
+    \item Même chose à droite.
+\end{itemize}
 \begin{minted}[bgcolor=yellow!10!white]{latex}
     Du texte avant.\\
     \floatpictureleft{0.3}{iris.png}{
@@ -274,41 +332,53 @@ Du texte avant.\\
 Du texte après.
 
 \begin{minted}[bgcolor=yellow!10!white]{latex}
+    Du texte avant, qui peut prendre toute la ligne ou pas.\\
+
+    \floatpictureleft{0.15}{iris.png}{
+        Une image à gauche avec du texte à droite. En général on s'arrange pour que le premier paramètre, qui est la fraction de la largeur de la ligne occupée par l'image et la quantité de texte à droite soient en harmonie sinon on a vu ce que ça donne. Ce n'est pas catastrophique et cela peut même être désiré, mais en s'y prenant bien, voici à quoi on arrive. Ce n'est pas parfait mais je n'ai pas trouvé mieux !
+        }\par\medskip
+
+    Du texte après, qui peut prendre toute la ligne ou pas.
+    \end{minted}
 Du texte avant, qui peut prendre toute la ligne ou pas.\\
-\floatpictureleft{0.15}{iris.png}{
-    Une image à gauche avec du texte à droite. En général on s'arrange pour que le premier paramètre, qui est la fraction de la largeur de la ligne occupée par l'image et la quantité de texte à droite soient en harmonie sinon on a vu ce que ça donne. Ce n'est pas catastrophique et cela peut même être désiré, mais en s'y prenant bien, voici à quoi on arrive. Ce n'est pas parfait mais je n'ai pas trouvé mieux !
-    }\par\medskip
-Du texte après, qui peut prendre toute la ligne ou pas.
-\end{minted}
-Du texte avant, qui peut prendre toute la ligne ou pas.\\
+
 \floatpictureleft{0.15}{iris.png}{ Une image à gauche avec du texte à droite. En général on s'arrange pour que le premier paramètre, qui est la fraction de la largeur de la ligne occupée par l'image et la quantité de texte à droite soient en harmonie sinon on a vu ce que ça donne. Ce n'est pas catastrophique et cela peut même être désiré, mais en s'y prenant bien, voici à quoi on arrive. Ce n'est pas parfait mais je n'ai pas trouvé mieux ! }\par\medskip
+
 Du texte après, qui peut prendre toute la ligne ou pas.\\
 
-\begin{minted}[bgcolor=yellow!10!white]{latex}
-\floatpictureleftcaption{0.15}{iris.png}{Quel belle fleur !}{ 
-    Une image \textit{légendée} à gauche avec du texte à droite : observez la légende en dessous de l'image.\\
-    En général on s'arrange pour que le premier paramètre, qui est la fraction de la largeur de la ligne occupée par l'image et la quantité de texte à droite soient en harmonie sinon on a vu ce que ça donne.\\
-    Ce n'est pas catastrophique et cela peut même être désiré, mais en s'y prenant bien, voici à quoi on arrive. Ce n'est pas parfait mais je n'ai pas trouvé mieux ! }\par\medskip
-Du texte après, qui peut prendre toute la ligne ou pas.
-\end{minted}
-\floatpictureleftcaption{0.15}{iris.png}{Quel belle fleur !}{
-    Une image \textit{légendée} à gauche avec du texte à droite : observez la légende en dessous de l'image.\\
-    En général on s'arrange pour que le premier paramètre, qui est la fraction de la largeur de la ligne occupée par l'image et la quantité de texte à droite soient en harmonie sinon on a vu ce que ça donne.\\
-    Ce n'est pas catastrophique et cela peut même être désiré, mais en s'y prenant bien, voici à quoi on arrive. Ce n'est pas parfait mais je n'ai pas trouvé mieux ! }\par\medskip
-Du texte après, qui peut prendre toute la ligne ou pas.
 
-\section{Tableaux de variations}
+Avec les commandes \mintinline{latex}{\dleft{largeur gauche}{contenu gauche}{contenu droite}} et
+\mintinline{latex}{\dright{largeur droite}{contenu gauche}{contenu droite}}
+
 \begin{minted}[bgcolor=yellow!10!white]{latex}
-    \begin{center}
+    \dleft{7cm}{
         \begin{tikzpicture}
-            \tkzTabInit[color,lgt=2,espcl=2]
-            {$x$ /.7 ,$f'(x)$ /.7,$f$ /1.4}
-            {$-\infty$, -1 ,5, $+\infty$ }
-            \tkzTabLine{,+ , z, -,z,+,}
-            \tkzTabVar{-/,+/,-/,+/}
+            \draw[fill=UGLiGreen!10](0,0) rectangle(7,2);
         \end{tikzpicture}
-    \end{center}   
+    }
+    {Vraiment sympa ce petit rectangle vert pastel à gauche de ce texte.}
 \end{minted}
+
+\dleft{7cm}{
+    \begin{tikzpicture}
+        \draw[fill=UGLiGreen!10](0,0) rectangle(7,2);
+    \end{tikzpicture}
+}
+{Vraiment sympa ce petit rectangle vert pastel à gauche de ce texte.}
+
+
+\section*{Tableaux de variations}
+\begin{minted}[bgcolor=yellow!10!white]{latex}
+        \begin{center}
+            \begin{tikzpicture}
+                \tkzTabInit[color,lgt=2,espcl=2]
+                {$x$ /.7 ,$f'(x)$ /.7,$f$ /1.4}
+                {$-\infty$, -1 ,5, $+\infty$ }
+                \tkzTabLine{,+ , z, -,z,+,}
+                \tkzTabVar{-/,+/,-/,+/}
+            \end{tikzpicture}
+        \end{center}   
+    \end{minted}
 
 \begin{center}
     \begin{tikzpicture}
@@ -320,8 +390,20 @@ Du texte après, qui peut prendre toute la ligne ou pas.
     \end{tikzpicture}
 \end{center}
 
-\section{Courbes représentatives}
+\section*{Courbes représentatives}
 \begin{minted}[bgcolor=yellow!10!white]{latex}
+    \begin{center}
+        \def\xmin{-1} \def\ymin{-1}\def\xmax{3}\def\ymax{2}
+        \def\F{\x-(\x)^(.5)}
+        \begin{tikzpicture}[scale=2]
+            \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
+            \draw[fill = white] (\xmin,\ymin) rectangle (\xmax,\ymax);
+            \reperev{\xmin}{\ymin}{\xmax}{\ymax}
+            \draw[thick,domain=0:\xmax,samples=1000,UGLiOrange,variable=\x] plot ({\x},{\F});    
+            \point{1}{1}{A} 
+        \end{tikzpicture}
+    \end{center}
+    \end{minted}
 \begin{center}
     \def\xmin{-1} \def\ymin{-1}\def\xmax{3}\def\ymax{2}
     \def\F{\x-(\x)^(.5)}
@@ -329,48 +411,36 @@ Du texte après, qui peut prendre toute la ligne ou pas.
         \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
         \draw[fill = white] (\xmin,\ymin) rectangle (\xmax,\ymax);
         \reperev{\xmin}{\ymin}{\xmax}{\ymax}
-        \draw[thick,domain=0:\xmax,samples=1000,UGLiOrange,variable=\x] plot ({\x},{\F});    
-        \point{1}{1}{A} 
-    \end{tikzpicture}
-\end{center}
-\end{minted}
-\begin{center}
-    \def\xmin{-1} \def\ymin{-1}\def\xmax{3}\def\ymax{2}
-    \def\F{\x-(\x)^(.5)}
-    \begin{tikzpicture}[scale=2]
-        \clip (\xmin,\ymin) rectangle (\xmax,\ymax);
-        \draw[fill = white] (\xmin,\ymin) rectangle (\xmax,\ymax);
-        \reperev{\xmin}{\ymin}{\xmax}{\ymax}
-        \draw[thick,domain=0:\xmax,samples=1000,UGLiOrange,variable=\x] plot ({\x},{\F});    
-        \point{1}{1}{A} 
+        \draw[thick,domain=0:\xmax,samples=1000,UGLiOrange,variable=\x] plot ({\x},{\F});
+        \point{1}{1}{A}
     \end{tikzpicture}
 \end{center}
 
-\section{Arbre de probabilités}
+\section*{Arbre de probabilités}
 
 \begin{minted}[bgcolor=yellow!10!white]{latex}
-\def\abun{A}
-\def\alun{0,1}
-
-\def\abdeux{$\barmaj{A}$}
-\def\aldeux{\ldots}
-
-\def\abtrois{$A\cap B$}
-\def\altrois{$p_A(B)$}
-
-\def\abquatre{$A\cap\barmaj{B}$}
-\def\alquatre{0,7}
-
-\def\abcinq{$\barmaj{A}\cap B$}
-\def\alcinq{0,4}
-
-\def\absix{$\barmaj{A}\cap\barmaj{B}$}
-\def\alsix{\ldots}
-
-\begin{center}
-    \arbreproba
-\end{center}
-\end{minted}
+    \def\abun{A}
+    \def\alun{0,1}
+    
+    \def\abdeux{$\barmaj{A}$}
+    \def\aldeux{\ldots}
+    
+    \def\abtrois{$A\cap B$}
+    \def\altrois{$p_A(B)$}
+    
+    \def\abquatre{$A\cap\barmaj{B}$}
+    \def\alquatre{0,7}
+    
+    \def\abcinq{$\barmaj{A}\cap B$}
+    \def\alcinq{0,4}
+    
+    \def\absix{$\barmaj{A}\cap\barmaj{B}$}
+    \def\alsix{\ldots}
+    
+    \begin{center}
+        \arbreproba
+    \end{center}
+    \end{minted}
 \def\abun{A}
 \def\alun{0,1}
 

@@ -13,7 +13,7 @@
 }
 \newcommand{\tabularstyled}[1][UGLiBlue]{
   \arrayrulecolor{white}
-  \rowcolors[]{1}{#1!10}{#1!0}
+  \rowcolors{1}{#1!0}{#1!10}
 }
 \newcommand{\ths}{\boxfont\bfseries\color{white}\boldmath}
 %>>>>>>>>>>>>>>>>> DEPRECATED : END
@@ -25,16 +25,16 @@
 \newcommand{\tabstyle}[1][UGLiOrange]{
     \renewcommand{\UGLiTabBackground}{#1}
     \arrayrulecolor{white}
-    \rowcolors[]{1}{#1!10}{#1!0}
+    \rowcolors[]{1}{\UGLiTabBackground!10}{\UGLiTabBackground!0}
 }
 \newcommand{\tabstyled}{
     \arrayrulecolor{white}
-    \rowcolors[]{1}{\UGLiTabBackground!10}{\UGLiTabBackground!0}
+    \rowcolors{1}{\UGLiTabBackground!0}{\UGLiTabBackground!10}
 }
 
 % colored cell
 \newcommand{\ccell}{\cellcolor{\UGLiTabBackground!50}\boxfont\bfseries\color{white}\boldmath}
-
+\newcommand{\bcell}{\cellcolor{white}}
 
 % default tab style
 \newcommand{\tabdefault}{
