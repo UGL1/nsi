@@ -73,6 +73,8 @@
     {\thesubsubsection} % Label
     {0em} % Separation between label and title
     {} % Code preceding the title
+    \newcommand{\titre}{\title}
+    \newcommand{\classe}[1]{}
 
 \else%
     \ifcsname classisexos\endcsname%
