@@ -36,6 +36,23 @@
 \RequirePackage{geometry}
 % specific class codes
 
+\titleformat{\section}
+{\Large\titlefont\color{UGLiBlue}} % Format for section title
+{\thesection~~} % Label
+{0em} % Separation between label and title
+{} % Code preceding the title
+
+\titleformat{\subsection}
+{\large\titlefont\color{UGLiOrange}} % Format for section title
+{\thesubsection~~} % Label
+{0em} % Separation between label and title
+{} % Code preceding the title
+
+\titleformat{\subsubsection}
+{\titlefont\color{UGLiGreen}} % Format for section title
+{\thesubsubsection~~} % Label
+{0em} % Separation between label and title
+{} % Code preceding the title
 
 % COURS
 \ifcsname classiscours\endcsname%
@@ -64,6 +81,13 @@
 % EXOS
 \else%
     \ifcsname classisexos\endcsname%
+    \newcommand{\exo}[1]{\section{#1}}
+    \renewcommand{\thesubsection}{\arabic{subsection}}
+    \titleformat{\section}
+    {\titlefont\color{UGLiBlue}} % Format for section title
+    {\Large Exercice \thesection~\normalsize} % Label
+    {0em} % Separation between label and title
+    {} % Code preceding the title
         \geometry{margin=2cm}
         \newcommand\myresult{exos}
        
@@ -121,23 +145,7 @@
 
 % common to all - rest
 
-\titleformat{\section}
-{\Large\titlefont\color{UGLiBlue}} % Format for section title
-{\thesection~~} % Label
-{0em} % Separation between label and title
-{} % Code preceding the title
 
-\titleformat{\subsection}
-{\large\titlefont\color{UGLiOrange}} % Format for section title
-{\thesubsection~~} % Label
-{0em} % Separation between label and title
-{} % Code preceding the title
-
-\titleformat{\subsubsection}
-{\titlefont\color{UGLiGreen}} % Format for section title
-{\thesubsubsection~~} % Label
-{0em} % Separation between label and title
-{} % Code preceding the title
 
 
 \input{nsicommon.tex}
