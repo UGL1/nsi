@@ -46,9 +46,10 @@
 
 % experimental
 \ifcsname firamath\endcsname%
-\RequirePackage[math-style=french]{unicode-math}
+\RequirePackage[math-style=french,bold-style=ISO]{unicode-math}
 \setmathfont{latinmodern-math.otf}
-\setmathfont{FiraMath-Regular.otf}[range={bfup,bfit,bfsfup,bfsfit}] % Does not work
 \setmathfont{FiraMath-Light.otf}[range={up, it,sfup,sfit}]
+%\setmathfont[version=bold]{FiraMath-Regular.otf}
+
 \fi
 
