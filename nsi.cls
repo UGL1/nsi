@@ -8,6 +8,7 @@
 \DeclareOption{exos}{\newcommand{\classisexos}{}\renewcommand{\parentclass}{article}}
 \DeclareOption{eval}{\newcommand{\classiseval}{}\renewcommand{\parentclass}{article}}
 \DeclareOption{article}{\newcommand{\classisarticle}{}\renewcommand{\parentclass}{article}}
+\DeclareOption{firamath}{\newcommand{\firamath}{}}
 
 % Parent class calling
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{\parentclass}}

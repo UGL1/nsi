@@ -43,3 +43,12 @@
   ItalicFont={Fira Sans Extrabold Italic},
   BoldItalicFont={Fira Sans Extrabold Italic}
 ]
+
+% experimental
+\ifcsname firamath\endcsname%
+\RequirePackage[math-style=french]{unicode-math}
+\setmathfont{latinmodern-math.otf}
+\setmathfont{FiraMath-Regular.otf}[range={bfup,bfit,bfsfup,bfsfit}] % Does not work
+\setmathfont{FiraMath-Light.otf}[range={up, it,sfup,sfit}]
+\fi
+
