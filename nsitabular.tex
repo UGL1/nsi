@@ -1,0 +1,60 @@
+\RequirePackage{colortbl}
+\newcolumntype{C}{c!{\color{white}\vline}}
+
+
+%>>>>>>>>>>>>>>>>> DEPRECATED : START
+\newcommand{\alternaterowcolors}[1][UGLiBlue]{\rowcolors[]{1}{#1!10}{#1!0}}
+\newcommand{\tabulardefault}{
+  \arrayrulecolor{black}
+  \rowcolors{1}{white}{white}
+}
+\newcommand{\tabularstyled}[1][UGLiBlue]{
+  \arrayrulecolor{white}
+  \rowcolors{1}{#1!0}{#1!10}
+}
+\newcommand{\ths}{\boxfont\bfseries\color{white}\boldmath}
+%>>>>>>>>>>>>>>>>> DEPRECATED : END
+
+\newcommand{\UGLiTabBackground}{white}
+
+% new tab style
+
+\newcommand{\tabstyle}[1][UGLiOrange]{
+    \renewcommand{\UGLiTabBackground}{#1}
+    \arrayrulecolor{white}
+    \rowcolors[]{1}{\UGLiTabBackground!10}{\UGLiTabBackground!0}
+    \global\rownum=0\relax
+}
+\newcommand{\tabstyled}{
+    \arrayrulecolor{white}
+    \rowcolors{1}{\UGLiTabBackground!10}{\UGLiTabBackground!0}
+    \global\rownum=0\relax
+}
+
+% colored cell
+
+\newcommand{\ccell}{\cellcolor{\UGLiTabBackground!50}\boxfont\bfseries\color{white}\boldmath}
+\newcommand{\bcell}{\cellcolor{white}}
+
+% default tab style
+\newcommand{\tabdefault}{
+    \arrayrulecolor{black}
+    \rowcolors{1}{white}{white}
+}
+
+% matrice environment to circumvent crippled pmatrix
+\newsavebox{\bmatrixbox}
+\newenvironment{matrice}
+{\begin{lrbox}{\bmatrixbox}
+    \mathsurround=0pt
+    $\displaystyle
+      \begin{pmatrix}}
+        {\end{pmatrix}$%
+  \end{lrbox}%
+  \usebox{\bmatrixbox}%
+  \kern-\wd\bmatrixbox
+  \makebox[0pt][l]{$\left(\vphantom{\usebox{\bmatrixbox}}\right.$}%
+  \kern\wd\bmatrixbox
+}
+
+

@@ -35,6 +35,7 @@
 \fi
 
 % common to all 
+\RequirePackage[table]{xcolor}
 \input{nsicolors.tex}
 \input{nsitikz.tex}
 \RequirePackage{titlesec}
@@ -152,6 +153,7 @@
 
 
 
-
+\input{nsitabular.tex}
+\input{nsibase.tex}
 \input{nsicommon.tex}
 \input{nsidivision.tex}
