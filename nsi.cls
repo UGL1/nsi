@@ -35,6 +35,7 @@
 \fi
 
 % common to all 
+\RequirePackage[normalem]{ulem}
 \RequirePackage[table]{xcolor}
 \input{nsicolors.tex}
 \input{nsitikz.tex}
