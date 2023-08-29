@@ -55,24 +55,15 @@
 
 
 % Boxes: various code environments inheriting from modubox
-\newenvironment*{encadrecolore}[2]{\begin{modubox}{#1}{#2}}{
-  \end{modubox}}
-\newenvironment*{pyc}{\begin{modubox}{Python}{UGLiPurple}}{
-  \end{modubox}}
-\newenvironment*{pys}{\begin{modubox}{Python}{UGLiPurple}}{
-  \end{modubox}}
-\newenvironment*{sql}{\begin{modubox}{SQL}{UGLiYellow}}{
-  \end{modubox}}
-\newenvironment*{html}{\begin{modubox}{HTML}{UGLiGreen}}{
-  \end{modubox}}
-\newenvironment*{css}{\begin{modubox}{CSS}{UGLiOrange}}{
-  \end{modubox}}
-\newenvironment*{js}{\begin{modubox}{Javascript}{UGLiBlue}}{
-  \end{modubox}}
-\newenvironment*{cpp}{\begin{modubox}{C++}{UGLiOrange}}{
-  \end{modubox}}
-\newenvironment*{clang}{\begin{modubox}{C}{UGLiOrange}}{
-  \end{modubox}}
+\newenvironment*{encadrecolore}[2]{\begin{modubox}{#1}{#2}}{\end{modubox}}
+\newenvironment*{pyc}{\begin{modubox}{Python}{UGLiPurple}}{\end{modubox}}
+\newenvironment*{pys}{\begin{modubox}{Python}{UGLiPurple}}{\end{modubox}}
+\newenvironment*{sql}{\begin{modubox}{SQL}{UGLiYellow}}{\end{modubox}}
+\newenvironment*{html}{\begin{modubox}{HTML}{UGLiGreen}}{\end{modubox}}
+\newenvironment*{css}{\begin{modubox}{CSS}{UGLiOrange}}{\end{modubox}}
+\newenvironment*{js}{\begin{modubox}{Javascript}{UGLiBlue}}{\end{modubox}}
+\newenvironment*{cpp}{\begin{modubox}{C++}{UGLiOrange}}{\end{modubox}}
+\newenvironment*{clang}{\begin{modubox}{C}{UGLiOrange}}{\end{modubox}}
 
 
 % Boxes: various text environments inheriting from modubox
@@ -83,6 +74,7 @@
 \newenvironment*{methode}[1][]{\begin{modubox}{Méthode#1}{UGLiPurple}}{\end{modubox}}
 \newenvironment*{remarque}[1][]{\begin{modubox}{Remarque#1}{UGLiGreen}}{\end{modubox}}
 \newenvironment*{aretenir}[1][]{\begin{modubox}{À retenir#1}{UGLiGreen}}{\end{modubox}}
+\newenvironment*{attention}[1][]{\begin{modubox}{Attention#1}{UGLiRed}}{\end{modubox}}
 \newenvironment*{demonstration}[1][]{\begin{modubox}{Preuve#1}{gray}}{\end{modubox}}
 
 % Boxes: exo
@@ -109,29 +101,29 @@
 
 %\dleft{absolute left length}{content1}{content2}
 \newcommand{\dleft}[3]{
-    \setlength{\colOne}{#1}
-    \setlength{\colTwo}{\dimexpr\textwidth-\colOne-\gutter\relax}
-    \noindent\begin{minipage}{\colOne}
+  \setlength{\colOne}{#1}
+  \setlength{\colTwo}{\dimexpr\textwidth-\colOne-\gutter\relax}
+  \noindent\begin{minipage}{\colOne}
     #2
-    \end{minipage}
-    \hspace{\dimexpr\gutter-.5em\relax}
-    \begin{minipage}{\colTwo}
+  \end{minipage}
+  \hspace{\dimexpr\gutter-.5em\relax}
+  \begin{minipage}{\colTwo}
     #3
-    \end{minipage}
+  \end{minipage}
 }
 
 
 %\dright{absolute right length}{content1}{content2}
 \newcommand{\dright}[3]{
-    \setlength{\colTwo}{#1}
-    \setlength{\colOne}{\dimexpr\textwidth-\colOne-\gutter\relax}
-    \noindent\begin{minipage}{\colOne}
+  \setlength{\colTwo}{#1}
+  \setlength{\colOne}{\dimexpr\textwidth-\colOne-\gutter\relax}
+  \noindent\begin{minipage}{\colOne}
     #2
-    \end{minipage}
-    \hspace{\dimexpr\gutter-.5em\relax}
-    \begin{minipage}{\colTwo}
+  \end{minipage}
+  \hspace{\dimexpr\gutter-.5em\relax}
+  \begin{minipage}{\colTwo}
     #3
-    \end{minipage}
+  \end{minipage}
 }
 
 
@@ -211,7 +203,7 @@
 \captionsetup{font=scriptsize}
 
 \newcommand{\introduction}[1] {
-    \begin{flushright}\small
-        \color{UGLiBlue}\textit{« #1 »}
-    \end{flushright}
+  \begin{flushright}\small
+    \color{UGLiBlue}\textit{« #1 »}
+  \end{flushright}
 }
