@@ -1,6 +1,11 @@
 \RequirePackage{microtype}
 \RequirePackage{polyglossia}
-\setdefaultlanguage{french}
+\ifcsname isenglish\endcsname%
+  \setdefaultlanguage{english}
+\else
+  \setdefaultlanguage{french}
+
+\fi
 \RequirePackage{fontspec}
 \RequirePackage{amssymb}
 
@@ -46,10 +51,9 @@
 
 % experimental
 \ifcsname firamath\endcsname%
-\RequirePackage[math-style=french,bold-style=ISO]{unicode-math}
-\setmathfont{latinmodern-math.otf}
-\setmathfont{FiraMath-Light.otf}[range={up, it,sfup,sfit}]
-%\setmathfont[version=bold]{FiraMath-Regular.otf}
-
+  \RequirePackage[math-style=french,bold-style=ISO]{unicode-math}
+  \setmathfont{latinmodern-math.otf}
+  \setmathfont{FiraMath-Light.otf}[range={up, it,sfup,sfit}]
+  %\setmathfont[version=bold]{FiraMath-Regular.otf}
 \fi
 

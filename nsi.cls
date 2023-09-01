@@ -8,7 +8,7 @@
 \DeclareOption{exos}{\newcommand{\classisexos}{}\renewcommand{\parentclass}{article}}
 \DeclareOption{eval}{\newcommand{\classiseval}{}\renewcommand{\parentclass}{article}}
 \DeclareOption{article}{\newcommand{\classisarticle}{}\renewcommand{\parentclass}{article}}
-
+\DeclareOption{english}{\newcommand{\isenglish}{}}
 
 % firamath option for lualatex only
 \DeclareOption{firamath}{\newcommand{\firamath}{}} % goes to nsilualatex.tex
