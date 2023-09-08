@@ -67,6 +67,24 @@
 
 
 % Boxes: various text environments inheriting from modubox
+
+\newcounter{exonumber}
+\setcounter{exonumber}{0}
+
+\ifcsname isenglish\endcsname%
+\newenvironment*{definition}[1][]{\begin{modubox}{Definition#1}{UGLiGreen}}{\end{modubox}}
+\newenvironment*{notation}[1][]{\begin{modubox}{Notation#1}{UGLiBlue}}{\end{modubox}}
+\newenvironment*{exemple}[1][]{\begin{modubox}{Example#1}{UGLiYellow}}{\end{modubox}}
+\newenvironment*{propriete}[1][]{\begin{modubox}{Proposition#1}{UGLiRed}}{\end{modubox}}
+\newenvironment*{methode}[1][]{\begin{modubox}{Method#1}{UGLiPurple}}{\end{modubox}}
+\newenvironment*{remarque}[1][]{\begin{modubox}{Remark#1}{UGLiGreen}}{\end{modubox}}
+\newenvironment*{aretenir}[1][]{\begin{modubox}{Note#1}{UGLiGreen}}{\end{modubox}}
+\newenvironment*{attention}[1][]{\begin{modubox}{Warning#1}{UGLiRed}}{\end{modubox}}
+\newenvironment*{demonstration}[1][]{\begin{modubox}{Proof#1}{gray}}{\end{modubox}}
+\newenvironment*{exercice}[1][]
+{\stepcounter{exonumber}\begin{modubox}{Exercise \theexonumber #1}{UGLiOrange}}
+    {\end{modubox}}
+\else
 \newenvironment*{definition}[1][]{\begin{modubox}{Définition#1}{UGLiGreen}}{\end{modubox}}
 \newenvironment*{notation}[1][]{\begin{modubox}{Notation#1}{UGLiBlue}}{\end{modubox}}
 \newenvironment*{exemple}[1][]{\begin{modubox}{Exemple#1}{UGLiYellow}}{\end{modubox}}
@@ -76,13 +94,12 @@
 \newenvironment*{aretenir}[1][]{\begin{modubox}{À retenir#1}{UGLiGreen}}{\end{modubox}}
 \newenvironment*{attention}[1][]{\begin{modubox}{Attention#1}{UGLiRed}}{\end{modubox}}
 \newenvironment*{demonstration}[1][]{\begin{modubox}{Preuve#1}{gray}}{\end{modubox}}
-
-% Boxes: exo
-\newcounter{exonumber}
-\setcounter{exonumber}{0}
 \newenvironment*{exercice}[1][]
 {\stepcounter{exonumber}\begin{modubox}{Exercice \theexonumber #1}{UGLiOrange}}
     {\end{modubox}}
+\fi
+% Boxes: exo
+
 
 
 % Backwards compatibility with old versions
