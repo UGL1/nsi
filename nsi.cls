@@ -123,11 +123,9 @@
             \renewcommand{\maketitle}{{
             \color{UGLiBlue}
             NOM, Prénom : \\[1em]
-            {\Huge\titlefont\Titre}\hfill\Classe\bigskip
-            }
-            \begin{tikzpicture}
-                \draw[color=UGLiBlue](0, 0)rectangle (\linewidth,3);
-            \end{tikzpicture}
+            {\Huge\titlefont\Titre}\hfill\Classe\medskip
+            \hrule}\ \\[1em]
+           
             }
         % ARTICLE
         \else
