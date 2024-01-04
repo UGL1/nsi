@@ -67,7 +67,6 @@
 
 
 % Boxes: various text environments inheriting from modubox
-
 \newcounter{exonumber}
 \setcounter{exonumber}{0}
 
@@ -98,9 +97,10 @@
 {\stepcounter{exonumber}\begin{modubox}{Exercice \theexonumber #1}{UGLiOrange}}
     {\end{modubox}}
 \fi
-% Boxes: exo
 
-
+\newenvironment*{questionnum}[1][]
+{\stepcounter{questionnumber}\begin{modubox}{Question \thequestionnumber #1}{UGLiGreen}}
+    {\end{modubox}}
 
 % Backwards compatibility with old versions
 \newcommand{\pythoninline}[1]{\mintinline{python}{#1}}
