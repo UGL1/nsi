@@ -35,6 +35,10 @@
 \fi
 
 % common to all 
+\RequirePackage{hyperref}
+\hypersetup{pdfborder = 0 0 0}
+\urlstyle{same}
+\newcommand{\link}[2]{\href{#1}{\color{blue}#2}}
 \RequirePackage[normalem]{ulem}
 \RequirePackage[table]{xcolor}
 \input{nsicolors.tex}
