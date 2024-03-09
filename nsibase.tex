@@ -1,4 +1,6 @@
 % General
+
+
 \newcommand\seconde{2$^{\textrm{nde}}$}                                             % 2nde
 \newcommand\premiere{1$^{\textrm{ère}}$}                                           	% 1
 \newcommand\premiereSTMG{1$^{\textrm{ère}}$ STMG}                                   % 1STMG
@@ -48,4 +50,6 @@
 \newcommand{\er}{$^{\textrm{er}}$\ }                                          % er
 \newcommand{\ere}{$^{\textrm{re}}$\ }                                         % ère
 
-
+\RequirePackage{suffix}
+\newcommand\seq[1]{\ensuremath{\left(#1_{n}\right)_{n\in\N}}}
+\WithSuffix\newcommand\seq*[1]{\ensuremath{\left(#1_{n}\right)_{n\in\N^*}}}
