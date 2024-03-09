@@ -26,6 +26,12 @@
 \newcommand{\question}{\addtocounter{questionnumber}{1}\textbf{\thequestionnumber.~}}
 \newcommand{\resetquestion}{\setcounter{questionnumber}{0}}
 
+% define the wide equivalent of these environements
+\newlist{enumalphw}{enumerate}{1}
+\setlist[enumalphw]{label=\textbf{\alph*.},wide}
+\newlist{enumeratew}{enumerate}{1}
+\setlist[enumeratew]{label=\textbf{\arabic*.},wide}
+
 % QCM
 \newlist{qcm}{enumerate}{1}
 \setlist[qcm]{label=\raisebox{-.2em}{\Large$\square$}\hspace*{1em}\textbf{\alph*.},leftmargin=*}
