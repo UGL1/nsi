@@ -7,26 +7,22 @@
 \setlength{\parindent}{0pt}
 \renewcommand{\baselinestretch}{1.2}
 
-
 % define a new list environment with lettered labels
 \newlist{enumalph}{enumerate}{1}
 \setlist[enumalph]{label=\textbf{\alph*.},leftmargin=1.3em}
 
-
 % beautify enumerate
 \setlist[enumerate]{label=\textbf{\arabic*.},leftmargin=*}
 
-
 % beautify itemize
 \setlist[itemize]{label=--,leftmargin=*}
-
 
 % enumerate-like \question command with no indentation at all
 \newcounter{questionnumber}
 \newcommand{\question}{\addtocounter{questionnumber}{1}\textbf{\thequestionnumber.~}}
 \newcommand{\resetquestion}{\setcounter{questionnumber}{0}}
 
-% define the wide equivalent of these environements
+% define the wide equivalent of these environments
 \newlist{enumalphw}{enumerate}{1}
 \setlist[enumalphw]{label=\textbf{\alph*.},wide}
 \newlist{enumeratew}{enumerate}{1}
@@ -35,8 +31,6 @@
 % QCM
 \newlist{qcm}{enumerate}{1}
 \setlist[qcm]{label=\raisebox{-.2em}{\Large$\square$}\hspace*{1em}\textbf{\alph*.},leftmargin=*}
-
-
 
 % Boxes: Packages
 \RequirePackage[minted,most]{tcolorbox}
@@ -59,7 +53,6 @@
     }
     {\end{tcolorbox}}
 
-
 % Boxes: various code environments inheriting from modubox
 \newenvironment*{encadrecolore}[2]{\begin{modubox}{#1}{#2}}{\end{modubox}}
 \newenvironment*{pyc}{\begin{modubox}{Python}{UGLiPurple}}{\end{modubox}}
@@ -71,37 +64,35 @@
 \newenvironment*{cpp}{\begin{modubox}{C++}{UGLiOrange}}{\end{modubox}}
 \newenvironment*{clang}{\begin{modubox}{C}{UGLiOrange}}{\end{modubox}}
 
-
 % Boxes: various text environments inheriting from modubox
 \newcounter{exonumber}
 \setcounter{exonumber}{0}
-
 \ifcsname isenglish\endcsname%
-\newenvironment*{definition}[1][]{\begin{modubox}{Definition#1}{UGLiGreen}}{\end{modubox}}
-\newenvironment*{notation}[1][]{\begin{modubox}{Notation#1}{UGLiBlue}}{\end{modubox}}
-\newenvironment*{exemple}[1][]{\begin{modubox}{Example#1}{UGLiYellow}}{\end{modubox}}
-\newenvironment*{propriete}[1][]{\begin{modubox}{Proposition#1}{UGLiRed}}{\end{modubox}}
-\newenvironment*{methode}[1][]{\begin{modubox}{Method#1}{UGLiPurple}}{\end{modubox}}
-\newenvironment*{remarque}[1][]{\begin{modubox}{Remark#1}{UGLiGreen}}{\end{modubox}}
-\newenvironment*{aretenir}[1][]{\begin{modubox}{Note#1}{UGLiGreen}}{\end{modubox}}
-\newenvironment*{attention}[1][]{\begin{modubox}{Warning#1}{UGLiRed}}{\end{modubox}}
-\newenvironment*{demonstration}[1][]{\begin{modubox}{Proof#1}{gray}}{\end{modubox}}
-\newenvironment*{exercice}[1][]
-{\stepcounter{exonumber}\begin{modubox}{Exercise \theexonumber #1}{UGLiOrange}}
-    {\end{modubox}}
+  \newenvironment*{definition}[1][]{\begin{modubox}{Definition#1}{UGLiGreen}}{\end{modubox}}
+  \newenvironment*{notation}[1][]{\begin{modubox}{Notation#1}{UGLiBlue}}{\end{modubox}}
+  \newenvironment*{exemple}[1][]{\begin{modubox}{Example#1}{UGLiYellow}}{\end{modubox}}
+  \newenvironment*{propriete}[1][]{\begin{modubox}{Proposition#1}{UGLiRed}}{\end{modubox}}
+  \newenvironment*{methode}[1][]{\begin{modubox}{Method#1}{UGLiPurple}}{\end{modubox}}
+  \newenvironment*{remarque}[1][]{\begin{modubox}{Remark#1}{UGLiGreen}}{\end{modubox}}
+  \newenvironment*{aretenir}[1][]{\begin{modubox}{Note#1}{UGLiGreen}}{\end{modubox}}
+  \newenvironment*{attention}[1][]{\begin{modubox}{Warning#1}{UGLiRed}}{\end{modubox}}
+  \newenvironment*{demonstration}[1][]{\begin{modubox}{Proof#1}{gray}}{\end{modubox}}
+  \newenvironment*{exercice}[1][]
+  {\stepcounter{exonumber}\begin{modubox}{Exercise \theexonumber #1}{UGLiOrange}}
+      {\end{modubox}}
 \else
-\newenvironment*{definition}[1][]{\begin{modubox}{Définition#1}{UGLiGreen}}{\end{modubox}}
-\newenvironment*{notation}[1][]{\begin{modubox}{Notation#1}{UGLiBlue}}{\end{modubox}}
-\newenvironment*{exemple}[1][]{\begin{modubox}{Exemple#1}{UGLiYellow}}{\end{modubox}}
-\newenvironment*{propriete}[1][]{\begin{modubox}{Propriété#1}{UGLiRed}}{\end{modubox}}
-\newenvironment*{methode}[1][]{\begin{modubox}{Méthode#1}{UGLiPurple}}{\end{modubox}}
-\newenvironment*{remarque}[1][]{\begin{modubox}{Remarque#1}{UGLiGreen}}{\end{modubox}}
-\newenvironment*{aretenir}[1][]{\begin{modubox}{À retenir#1}{UGLiGreen}}{\end{modubox}}
-\newenvironment*{attention}[1][]{\begin{modubox}{Attention#1}{UGLiRed}}{\end{modubox}}
-\newenvironment*{demonstration}[1][]{\begin{modubox}{Preuve#1}{gray}}{\end{modubox}}
-\newenvironment*{exercice}[1][]
-{\stepcounter{exonumber}\begin{modubox}{Exercice \theexonumber #1}{UGLiOrange}}
-    {\end{modubox}}
+  \newenvironment*{definition}[1][]{\begin{modubox}{Définition#1}{UGLiGreen}}{\end{modubox}}
+  \newenvironment*{notation}[1][]{\begin{modubox}{Notation#1}{UGLiBlue}}{\end{modubox}}
+  \newenvironment*{exemple}[1][]{\begin{modubox}{Exemple#1}{UGLiYellow}}{\end{modubox}}
+  \newenvironment*{propriete}[1][]{\begin{modubox}{Propriété#1}{UGLiRed}}{\end{modubox}}
+  \newenvironment*{methode}[1][]{\begin{modubox}{Méthode#1}{UGLiPurple}}{\end{modubox}}
+  \newenvironment*{remarque}[1][]{\begin{modubox}{Remarque#1}{UGLiGreen}}{\end{modubox}}
+  \newenvironment*{aretenir}[1][]{\begin{modubox}{À retenir#1}{UGLiGreen}}{\end{modubox}}
+  \newenvironment*{attention}[1][]{\begin{modubox}{Attention#1}{UGLiRed}}{\end{modubox}}
+  \newenvironment*{demonstration}[1][]{\begin{modubox}{Preuve#1}{gray}}{\end{modubox}}
+  \newenvironment*{exercice}[1][]
+  {\stepcounter{exonumber}\begin{modubox}{Exercice \theexonumber #1}{UGLiOrange}}
+      {\end{modubox}}
 \fi
 
 \newenvironment*{questionnum}[1][]
@@ -112,7 +103,6 @@
 \newcommand{\pythoninline}[1]{\mintinline{python}{#1}}
 %\newcommand{«}{«}
 %\newcommand{»}{»}
-
 
 
 \newlength{\colOne}
@@ -135,7 +125,6 @@
   \end{minipage}
 }
 
-
 %\dright{absolute right length}{content1}{content2}
 \newcommand{\dright}[3]{
   \setlength{\colTwo}{#1}
@@ -149,7 +138,6 @@
   \end{minipage}
 }
 
-
 %\floatpictureright{fraction}{imagefile}{text}
 \newcommand{\floatpictureright}[3]{
   \setlength{\colTwo}{\dimexpr#1\textwidth}
@@ -162,9 +150,9 @@
     \includegraphics[width=\colTwo]{#2}
   \end{minipage}
 }
+
 % alias picright
 \newcommand{\picright}[3]{\floatpictureright{#1}{#2}{#3}}
-
 
 %\floatpictureleft{fraction}{imagefile}{text}
 \newcommand{\floatpictureleft}[3]{
@@ -178,9 +166,9 @@
     #3
   \end{minipage}
 }
+
 % alias picleft
 \newcommand{\picleft}[3]{\floatpictureleft{#1}{#2}{#3}}
-
 
 %\floatpicturerightcaption{fraction}{imagefile}{caption}{text}
 \newcommand{\floatpicturerightcaption}[4]{
@@ -199,7 +187,6 @@
 % alias picrightc
 \newcommand{\picrightc}[4]{\floatpicturerightcaption{#1}{#2}{#3}{#4}}
 
-
 %\floatpictureleftcaption{fraction}{imagefile}{caption}{text}
 \newcommand{\floatpictureleftcaption}[4]{
   \setlength{\colOne}{\dimexpr#1\textwidth}
@@ -216,8 +203,6 @@
 }
 % alias picleftc
 \newcommand{\picleftc}[4]{\floatpictureleftcaption{#1}{#2}{#3}{#4}}
-
-
 
 %old stuff
 \newcommand{\bareme}[1]{{\scriptsize\hfill\color{gray}\ldots~/ #1}}

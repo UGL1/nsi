@@ -13,25 +13,23 @@
 % firamath option for lualatex only
 \DeclareOption{firamath}{\newcommand{\firamath}{}} % goes to nsilualatex.tex
 
-
 % Parent class calling
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{\parentclass}}
 \ProcessOptions\relax
 \LoadClass{\parentclass}
 
-
 % Specific compilation options
 \ifluatex{}
-\newcommand\compiler{LuaLaTeX}
-\input{nsilualatex.tex}
+    \newcommand\compiler{LuaLaTeX}
+    \input{nsilualatex.tex}
 \else
-\ifpdftex{}
-\newcommand\compiler{pdfLaTeX}
-\input{nsipdflatex.tex}
-\else
-\errmessage{This class must be compiled with LuaLaTeX (final) or pdfLaTeX (draft).}
-\def~{~~}~
-\fi
+    \ifpdftex{}
+        \newcommand\compiler{pdfLaTeX}
+        \input{nsipdflatex.tex}
+    \else
+        \errmessage{This class must be compiled either with LuaLaTeX (final) or pdfLaTeX (draft).}
+        \def~{~~}~
+    \fi
 \fi
 
 % common to all 
@@ -45,8 +43,8 @@
 \input{nsitikz.tex}
 \RequirePackage{titlesec}
 \RequirePackage{geometry}
-% specific class codes
 
+% specific class codes
 \titleformat{\section}
 {\Large\titlefont\color{UGLiBlue}} % Format for section title
 {\thesection~~} % Label
@@ -151,11 +149,7 @@
     \fi
 \fi%
 
-
 % common to all - rest
-
-
-
 \input{nsitabular.tex}
 \input{nsibase.tex}
 \input{nsicommon.tex}
