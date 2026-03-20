@@ -13,6 +13,9 @@
 
 % beautify enumerate
 \setlist[enumerate]{label=\textbf{\arabic*.},leftmargin=*}
+\newlist{enumnoindent}{enumerate}{1}
+\setlist[enumnoindent]{label=\textbf{\arabic*.},,leftmargin=*}
+
 
 % beautify itemize
 \setlist[itemize]{label=--,leftmargin=*}
